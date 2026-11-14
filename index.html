@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ONESTOP AI — คู่มือการใช้งาน Netflix & ระบบปลดล็อกอัตโนมัติ</title>
+  <title>คู่มือการใช้งาน Netflix — ONESTOP AI</title>
   <!-- Google Fonts: Prompt -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Lucide Icons -->
@@ -23,15 +23,8 @@
           colors: {
             netflix: {
               red: '#E50914',
-              darkRed: '#B20710',
-              black: '#141414',
-              card: '#1F1F24',
-              hover: '#2A2A32',
-              border: '#33333D',
-            },
-            accent: {
-              green: '#00E676',
-              yellow: '#FFC107',
+              card: '#16161B',
+              border: '#282830',
             }
           }
         }
@@ -40,7 +33,7 @@
   </script>
   <style>
     body {
-      background-color: #0E0E12;
+      background-color: #0A0A0D;
       color: #F3F4F6;
       font-family: 'Prompt', sans-serif;
       -webkit-tap-highlight-color: transparent;
@@ -48,528 +41,173 @@
     .active-tab {
       background-color: #E50914 !important;
       color: #FFFFFF !important;
-      box-shadow: 0 4px 14px rgba(229, 9, 20, 0.4);
+      box-shadow: 0 4px 16px rgba(229, 9, 20, 0.45);
     }
     .active-pill {
-      background-color: #2A2A36 !important;
-      color: #FFC107 !important;
-      border-color: #FFC107 !important;
+      background-color: #E50914 !important;
+      color: #FFFFFF !important;
+      border-color: #E50914 !important;
     }
-    .custom-scroll::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
+    .img-box {
+      border: 1px solid #282830;
+      border-radius: 1rem;
+      overflow: hidden;
+      background-color: #121216;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+      transition: border-color 0.2s ease, transform 0.2s ease;
     }
-    .custom-scroll::-webkit-scrollbar-thumb {
-      background: #33333E;
-      border-radius: 999px;
+    .img-box:hover {
+      border-color: #E50914;
     }
-    .img-zoom {
+    .img-box img {
       cursor: zoom-in;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .img-zoom:hover {
-      transform: scale(1.015);
-      box-shadow: 0 10px 25px -5px rgba(229, 9, 20, 0.3);
+      display: block;
+      width: 100%;
+      height: auto;
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col selection:bg-netflix-red selection:text-white pb-16">
+<body class="min-h-screen flex flex-col pb-16">
 
-  <!-- TOP HEADER & BRAND -->
-  <header class="sticky top-0 z-40 bg-[#121216]/95 backdrop-blur-md border-b border-netflix-border/80 shadow-lg">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="bg-netflix-red text-white font-extrabold text-sm tracking-wider px-3 py-1 rounded shadow-md flex items-center gap-1.5">
-          <i data-lucide="tv" class="w-4 h-4"></i> ONESTOP AI
-        </div>
-        <div>
-          <h1 class="text-base sm:text-lg font-bold text-white leading-tight">ศูนย์ช่วยเหลือ & คู่มือใช้งาน Netflix</h1>
-          <p class="text-xs text-gray-400 hidden sm:block">ระบบอัตโนมัติ 24 ชม. • แก้ปัญหาครัวเรือน & รับรหัส</p>
-        </div>
-      </div>
-
+  <!-- TOP BAR & MENU TABS -->
+  <header class="sticky top-0 z-40 bg-[#0F0F14]/95 backdrop-blur-md border-b border-[#22222A]">
+    <div class="max-w-4xl mx-auto px-3 sm:px-4 py-2.5 flex items-center justify-between">
       <div class="flex items-center gap-2">
-        <a href="https://areslanestore.shop" target="_blank" rel="noopener noreferrer" 
-           class="inline-flex items-center gap-1.5 bg-netflix-hover hover:bg-netflix-border border border-netflix-border text-accent-yellow text-xs sm:text-sm font-semibold px-3 py-1.5 rounded-lg transition duration-200">
-          <i data-lucide="external-link" class="w-4 h-4"></i>
-          <span>เปิดเว็บรับรหัส</span>
-        </a>
+        <span class="bg-netflix-red text-white font-extrabold text-xs px-2.5 py-1 rounded tracking-wider flex items-center gap-1">
+          <i data-lucide="tv" class="w-3.5 h-3.5"></i> ONESTOP AI
+        </span>
+        <span class="text-xs sm:text-sm font-semibold text-gray-300">คู่มือใช้งาน Netflix</span>
       </div>
+
+      <a href="https://areslanestore.shop" target="_blank" rel="noopener noreferrer" 
+         class="inline-flex items-center gap-1.5 bg-[#1F1F28] hover:bg-[#2A2A38] border border-[#333342] text-amber-400 text-xs font-bold px-3 py-1.5 rounded-lg transition">
+        <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+        <span>เปิดเว็บรับรหัส</span>
+      </a>
     </div>
 
-    <!-- MAIN NAVIGATION TABS (แยกเมนูกันชัดเจน) -->
-    <div class="bg-[#18181F] border-t border-netflix-border/60">
-      <div class="max-w-6xl mx-auto px-4 flex gap-2 overflow-x-auto custom-scroll py-2.5">
+    <!-- MAIN TABS (แยกเมนูกันชัดเจน) -->
+    <div class="bg-[#14141B] border-t border-[#1F1F28]">
+      <div class="max-w-4xl mx-auto px-3 sm:px-4 flex gap-2 py-2">
         <button onclick="switchTab('tab-login')" id="btn-tab-login" 
-                class="tab-btn active-tab flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold whitespace-nowrap transition-all duration-200 bg-netflix-card text-gray-300 hover:text-white hover:bg-netflix-hover">
+                class="tab-btn active-tab flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold transition duration-150 bg-[#1A1A22] text-gray-400 hover:text-white">
           <i data-lucide="key-round" class="w-4 h-4"></i>
           1. คู่มือเข้าสู่ระบบครั้งแรก
         </button>
 
         <button onclick="switchTab('tab-areslane')" id="btn-tab-areslane" 
-                class="tab-btn flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold whitespace-nowrap transition-all duration-200 bg-netflix-card text-gray-300 hover:text-white hover:bg-netflix-hover">
+                class="tab-btn flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold transition duration-150 bg-[#1A1A22] text-gray-400 hover:text-white">
           <i data-lucide="shield-check" class="w-4 h-4"></i>
-          2. คู่มือเว็บรับรหัส & ปลดล็อก (areslanestore.shop)
-        </button>
-
-        <button onclick="switchTab('tab-faq')" id="btn-tab-faq" 
-                class="tab-btn flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold whitespace-nowrap transition-all duration-200 bg-netflix-card text-gray-300 hover:text-white hover:bg-netflix-hover">
-          <i data-lucide="help-circle" class="w-4 h-4"></i>
-          3. ทริคสำคัญ & วิธีแก้ปัญหา
+          2. คู่มือเว็บรับรหัส (areslanestore.shop)
         </button>
       </div>
     </div>
   </header>
 
-  <!-- MAIN CONTAINER -->
-  <main class="max-w-6xl mx-auto px-4 mt-6 flex-1 w-full">
+  <!-- CONTENT CONTAINER -->
+  <main class="max-w-4xl mx-auto px-3 sm:px-4 mt-4 sm:mt-6 flex-1 w-full">
 
     <!-- ========================================================================= -->
-    <!-- MENU 1: คู่มือเข้าสู่ระบบครั้งแรก (Login Guide) -->
+    <!-- MENU 1: คู่มือเข้าสู่ระบบครั้งแรก (มีเฉพาะรูปภาพ 5 ขั้นตอน) -->
     <!-- ========================================================================= -->
-    <section id="tab-login" class="space-y-6">
-      
-      <!-- HERO BANNER -->
-      <div class="bg-gradient-to-r from-red-950/40 via-netflix-card to-[#16161D] border border-red-900/40 rounded-2xl p-5 sm:p-6 shadow-xl relative overflow-hidden">
-        <div class="absolute -right-8 -top-8 w-40 h-40 bg-netflix-red/10 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div>
-            <div class="inline-flex items-center gap-2 bg-netflix-red/20 border border-netflix-red/40 text-netflix-red text-xs font-bold px-3 py-1 rounded-full mb-2">
-              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> คำแนะนำสำหรับลูกค้าใหม่
-            </div>
-            <h2 class="text-xl sm:text-2xl font-extrabold text-white">ขั้นตอนการลงชื่อเข้าใช้ Netflix ครั้งแรก</h2>
-            <p class="text-sm text-gray-300 mt-1">ทำตาม 5 ขั้นตอนนี้อย่างเคร่งครัด เพื่อเข้าดูได้ทันทีโดยไม่ต้องรอโค้ดอีเมล</p>
-          </div>
-          <div class="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-3.5 text-xs sm:text-sm text-yellow-300 max-w-sm">
-            <strong class="text-yellow-400 flex items-center gap-1 font-bold mb-1">
-              <i data-lucide="alert-triangle" class="w-4 h-4"></i> จุดสำคัญที่สุด (ห้ามรอโค้ด)
-            </strong>
-            เมื่อหน้าจอถามรหัสยืนยันอีเมล <span class="text-white underline font-semibold">ห้ามรอโค้ดเด็ดขาด!</span> ให้กด <em>"ต้องการความช่วยเหลือ?"</em> แล้วเลือก <em>"ใช้รหัสผ่าน"</em>
-          </div>
-        </div>
+    <section id="tab-login" class="space-y-4 sm:space-y-6">
+      <div class="img-box">
+        <img src="./images/step-01-email.png" alt="ขั้นตอนที่ 1" onclick="openLightbox(this.src)">
       </div>
-
-      <!-- 5 STEPS ACCORDION / CARDS -->
-      <div class="space-y-6">
-
-        <!-- STEP 1 -->
-        <div class="bg-netflix-card border border-netflix-border rounded-2xl p-5 sm:p-6 shadow-lg hover:border-gray-600 transition duration-200">
-          <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-netflix-red text-white flex items-center justify-center font-black text-lg shadow-md">
-              1
-            </div>
-            <div class="flex-1">
-              <span class="text-xs font-bold text-netflix-red uppercase tracking-wider">ขั้นตอนแรก</span>
-              <h3 class="text-lg sm:text-xl font-bold text-white mt-0.5">กด "เข้าสู่ระบบ (Sign In)" แล้วพิมพ์อีเมลของร้าน</h3>
-              <p class="text-sm text-gray-300 mt-1">
-                เปิดแอพ Netflix หรือเข้าเว็บ Netflix.com กดปุ่ม <strong>เข้าสู่ระบบ</strong> ที่มุมขวาบน จากนั้นพิมพ์ <strong>อีเมลที่ได้รับจากทางร้าน</strong> แล้วกดปุ่ม <strong>"ถัดไป" (Next)</strong>
-              </p>
-              <div class="mt-4 rounded-xl overflow-hidden border border-netflix-border/80 bg-black/40">
-                <img src="./images/step-01-email.png" alt="ขั้นตอนที่ 1 กรอกอีเมล" class="w-full h-auto img-zoom" onclick="openLightbox(this.src, 'ขั้นตอนที่ 1 : กรอกอีเมลที่ได้รับจากร้าน')">
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- STEP 2 -->
-        <div class="bg-netflix-card border-2 border-red-600/70 rounded-2xl p-5 sm:p-6 shadow-lg relative overflow-hidden">
-          <div class="absolute top-0 right-0 bg-netflix-red text-white text-[11px] font-bold px-3 py-1 rounded-bl-xl shadow">
-            สำคัญที่สุด!
-          </div>
-          <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-yellow-500 text-black flex items-center justify-center font-black text-lg shadow-md">
-              2
-            </div>
-            <div class="flex-1">
-              <span class="text-xs font-bold text-yellow-400 uppercase tracking-wider">จุดสำคัญห้ามพลาด</span>
-              <h3 class="text-lg sm:text-xl font-bold text-white mt-0.5">ห้ามรอโค้ด! ให้กด "ต้องการความช่วยเหลือ?"</h3>
-              <p class="text-sm text-gray-300 mt-1">
-                หน้าจอจะเด้งขึ้นมาว่า <span class="text-red-400 font-semibold">"ส่งรหัสลงชื่อเข้าใช้ไปที่อีเมล"</span> และมีช่องให้ใส่รหัส 
-                <strong class="text-yellow-300 underline">ห้ามรอเด็ดขาด</strong> ให้มองหาตัวหนังสือสีขาวเล็กๆ ด้านล่างที่เขียนว่า:
-              </p>
-              <div class="my-2.5 p-3 rounded-xl bg-red-950/40 border border-red-800/50 text-sm font-semibold text-red-200 flex items-center gap-2">
-                <i data-lucide="help-circle" class="w-5 h-5 text-yellow-400 flex-shrink-0"></i>
-                <span>👉 กดที่คำว่า: <strong>"ต้องการความช่วยเหลือ?"</strong> หรือ <strong>"ขอความช่วยเหลือในการลงชื่อเข้าใช้ (Get help / Need help?)"</strong></span>
-              </div>
-              <div class="mt-4 rounded-xl overflow-hidden border border-netflix-border/80 bg-black/40">
-                <img src="./images/step-02-help.png" alt="ขั้นตอนที่ 2 กดขอความช่วยเหลือ" class="w-full h-auto img-zoom" onclick="openLightbox(this.src, 'ขั้นตอนที่ 2 : กดต้องการความช่วยเหลือ (ห้ามรอโค้ด)')">
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- STEP 3 -->
-        <div class="bg-netflix-card border border-netflix-border rounded-2xl p-5 sm:p-6 shadow-lg hover:border-gray-600 transition duration-200">
-          <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-netflix-red text-white flex items-center justify-center font-black text-lg shadow-md">
-              3
-            </div>
-            <div class="flex-1">
-              <span class="text-xs font-bold text-netflix-red uppercase tracking-wider">เลือกวิธีลงชื่อเข้าใช้</span>
-              <h3 class="text-lg sm:text-xl font-bold text-white mt-0.5">เลือกตัวเลือก "ใช้รหัสผ่าน" (Use Password)</h3>
-              <p class="text-sm text-gray-300 mt-1">
-                หน้าจอจะมีตัวเลือกเด้งขึ้นมา ให้กดเลือกคำว่า <strong class="text-accent-green font-bold">"ใช้รหัสผ่าน" (Use Password)</strong> เพื่อเปลี่ยนไปกรอกพาสเวิร์ดทันที
-              </p>
-              <div class="mt-4 rounded-xl overflow-hidden border border-netflix-border/80 bg-black/40">
-                <img src="./images/step-03-password.png" alt="ขั้นตอนที่ 3 เลือกใช้รหัสผ่าน" class="w-full h-auto img-zoom" onclick="openLightbox(this.src, 'ขั้นตอนที่ 3 : กดเลือก ใช้รหัสผ่าน (Use Password)')">
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- STEP 4 -->
-        <div class="bg-netflix-card border border-netflix-border rounded-2xl p-5 sm:p-6 shadow-lg hover:border-gray-600 transition duration-200">
-          <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-netflix-red text-white flex items-center justify-center font-black text-lg shadow-md">
-              4
-            </div>
-            <div class="flex-1">
-              <span class="text-xs font-bold text-netflix-red uppercase tracking-wider">กรอกรหัสผ่าน</span>
-              <h3 class="text-lg sm:text-xl font-bold text-white mt-0.5">กรอกรหัสผ่านของร้าน แล้วกด "เข้าสู่ระบบ"</h3>
-              <p class="text-sm text-gray-300 mt-1">
-                หน้าจอจะเปลี่ยนเป็นช่องให้พิมพ์รหัสผ่าน -> พิมพ์ <strong>รหัสผ่าน (Password)</strong> ที่ได้รับจากทางร้าน แล้วกดปุ่มสีแดง <strong>"เข้าสู่ระบบ"</strong>
-              </p>
-              <div class="mt-4 rounded-xl overflow-hidden border border-netflix-border/80 bg-black/40">
-                <img src="./images/step-04-enter-pwd.png" alt="ขั้นตอนที่ 4 กรอกรหัสผ่าน" class="w-full h-auto img-zoom" onclick="openLightbox(this.src, 'ขั้นตอนที่ 4 : กรอกรหัสผ่านแล้วกด เข้าสู่ระบบ')">
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- STEP 5 -->
-        <div class="bg-netflix-card border border-accent-green/60 rounded-2xl p-5 sm:p-6 shadow-lg">
-          <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-accent-green text-black flex items-center justify-center font-black text-lg shadow-md">
-              5
-            </div>
-            <div class="flex-1">
-              <span class="text-xs font-bold text-accent-green uppercase tracking-wider">ขั้นตอนสุดท้าย</span>
-              <h3 class="text-lg sm:text-xl font-bold text-white mt-0.5">เลือก "จอโปรไฟล์ส่วนตัว" ที่ทางร้านระบุไว้เท่านั้น</h3>
-              <p class="text-sm text-gray-300 mt-1">
-                กดเข้าเฉพาะ <strong class="text-accent-green font-bold">"โปรไฟล์ช่องที่ทางร้านระบุไว้เท่านั้น"</strong> (เช่น จอ 1, จอ 2 ตามที่แอดมินแจ้ง) เพื่อความเป็นส่วนตัวและไม่รบกวนลูกค้าท่านอื่น จากนั้นเริ่มรับชมได้ทันทีครับ!
-              </p>
-              <div class="mt-4 rounded-xl overflow-hidden border border-netflix-border/80 bg-black/40">
-                <img src="./images/step-05-profile.png" alt="ขั้นตอนที่ 5 เลือกโปรไฟล์" class="w-full h-auto img-zoom" onclick="openLightbox(this.src, 'ขั้นตอนที่ 5 : เลือกจอเฉพาะโปรไฟล์ที่ระบุไว้')">
-              </div>
-            </div>
-          </div>
-        </div>
-
+      <div class="img-box">
+        <img src="./images/step-02-help.png" alt="ขั้นตอนที่ 2" onclick="openLightbox(this.src)">
       </div>
-
+      <div class="img-box">
+        <img src="./images/step-03-password.png" alt="ขั้นตอนที่ 3" onclick="openLightbox(this.src)">
+      </div>
+      <div class="img-box">
+        <img src="./images/step-04-enter-pwd.png" alt="ขั้นตอนที่ 4" onclick="openLightbox(this.src)">
+      </div>
+      <div class="img-box">
+        <img src="./images/step-05-profile.png" alt="ขั้นตอนที่ 5" onclick="openLightbox(this.src)">
+      </div>
     </section>
 
     <!-- ========================================================================= -->
-    <!-- MENU 2: คู่มือการใช้เว็บรับรหัส & ปลดล็อก (areslanestore.shop) -->
+    <!-- MENU 2: คู่มือเว็บปลดล็อก & รับรหัส (areslanestore.shop) (มีเฉพาะรูปภาพ) -->
     <!-- ========================================================================= -->
-    <section id="tab-areslane" class="hidden space-y-6">
+    <section id="tab-areslane" class="hidden space-y-4 sm:space-y-6">
       
-      <!-- HERO BANNER -->
-      <div class="bg-gradient-to-r from-emerald-950/40 via-netflix-card to-[#16161D] border border-emerald-900/40 rounded-2xl p-5 sm:p-6 shadow-xl relative overflow-hidden">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div>
-            <div class="inline-flex items-center gap-2 bg-accent-green/20 border border-accent-green/40 text-accent-green text-xs font-bold px-3 py-1 rounded-full mb-2">
-              <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> ระบบบริการตนเอง 24 ชั่วโมง
-            </div>
-            <h2 class="text-xl sm:text-2xl font-extrabold text-white">คู่มือใช้งานเว็บรับรหัส areslanestore.shop</h2>
-            <p class="text-sm text-gray-300 mt-1">ใช้เมื่อหน้าจอขึ้นถามหา OTP หรือแจ้งเตือน <em>"อุปกรณ์ไม่ได้เป็นส่วนหนึ่งของครัวเรือน"</em></p>
-          </div>
-          <div class="flex items-center gap-3">
-            <a href="https://areslanestore.shop" target="_blank" rel="noopener noreferrer" 
-               class="bg-netflix-red hover:bg-netflix-darkRed text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-lg flex items-center gap-2 transition duration-200">
-              <i data-lucide="globe" class="w-4 h-4"></i> เข้าสู่หน้าเว็บจริง
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- SUB-NAV / CASE SELECTOR PILLS -->
-      <div class="bg-netflix-card border border-netflix-border rounded-2xl p-2.5 flex flex-wrap gap-2">
+      <!-- SUB-CASE SWITCHER PILLS -->
+      <div class="bg-[#14141B] border border-[#22222A] rounded-xl p-1.5 flex gap-1.5">
         <button onclick="switchCase('case-1')" id="btn-case-1" 
-                class="case-pill active-pill flex-1 min-w-[200px] text-center px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border border-transparent transition duration-200">
-          ✉️ กรณีที่ 1 : ขอรหัสยืนยันอีเมล (OTP)
+                class="case-pill active-pill flex-1 py-2 rounded-lg text-xs sm:text-sm font-bold text-center border border-transparent transition">
+          กรณีที่ 1 : ขอรหัส OTP
         </button>
         <button onclick="switchCase('case-2')" id="btn-case-2" 
-                class="case-pill flex-1 min-w-[200px] text-center px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border border-transparent text-gray-400 hover:text-white transition duration-200">
-          📱 กรณีที่ 2 : มือถือ / PC ติดครัวเรือน
+                class="case-pill flex-1 py-2 rounded-lg text-xs sm:text-sm font-bold text-center border border-transparent text-gray-400 hover:text-white transition">
+          กรณีที่ 2 : มือถือ / PC ติดครัวเรือน
         </button>
         <button onclick="switchCase('case-3')" id="btn-case-3" 
-                class="case-pill flex-1 min-w-[200px] text-center px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border border-transparent text-gray-400 hover:text-white transition duration-200">
-          📺 กรณีที่ 3 : Smart TV ติดครัวเรือน
+                class="case-pill flex-1 py-2 rounded-lg text-xs sm:text-sm font-bold text-center border border-transparent text-gray-400 hover:text-white transition">
+          กรณีที่ 3 : Smart TV ติดครัวเรือน
         </button>
       </div>
 
-      <!-- CASE 1: ขอรหัสยืนยัน OTP -->
-      <div id="case-1" class="case-section space-y-6">
-        <div class="bg-netflix-card border border-netflix-border rounded-2xl p-5 sm:p-6 shadow-xl">
-          <div class="flex items-center gap-3 mb-4 border-b border-netflix-border pb-3">
-            <span class="bg-netflix-red text-white text-xs font-black px-2.5 py-1 rounded">กรณีที่ 1</span>
-            <h3 class="text-lg sm:text-xl font-bold text-white">เข้าสู่ระบบแล้ว Netflix ให้ส่งรหัสยืนยันไปที่อีเมล</h3>
-          </div>
-
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-            <!-- Left: Device Screen -->
-            <div class="space-y-3">
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-bold text-yellow-400 flex items-center gap-1.5">
-                  <i data-lucide="smartphone" class="w-4 h-4"></i> ฝั่งหน้าจอ Netflix ของคุณ
-                </span>
-                <span class="text-xs bg-red-950/60 text-red-300 border border-red-800/40 px-2 py-0.5 rounded font-medium">กดปุ่มในกรอบสีเหลือง</span>
-              </div>
-              <div class="rounded-xl overflow-hidden border border-netflix-border bg-black/40">
-                <img src="./images/guide-device-01-netflix.png" alt="หน้าจอ Netflix กดส่งรหัส" class="w-full h-auto img-zoom" onclick="openLightbox(this.src, 'กรณีที่ 1 : หน้าจอ Netflix กดส่งรหัสทางอีเมล')">
-              </div>
-              <ul class="text-xs sm:text-sm text-gray-300 space-y-1.5 pl-1">
-                <li>• กดปุ่ม <strong>[ Enviar código por email ]</strong> (ส่งรหัสทางอีเมล)</li>
-                <li>• <strong>ห้ามกดรอรหัสเฉยๆ!</strong> ต้องกดส่งรหัสก่อนระบบจึงจะได้รับโค้ด</li>
-                <li>• รอประมาณ 10 วินาที เพื่อให้ระบบประมวลผล</li>
-              </ul>
-            </div>
-
-            <!-- Right: Web Screen -->
-            <div class="space-y-3">
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-bold text-accent-green flex items-center gap-1.5">
-                  <i data-lucide="globe" class="w-4 h-4"></i> ฝั่งหน้าเว็บ areslanestore.shop
-                </span>
-                <span class="text-xs bg-green-950/60 text-green-300 border border-green-800/40 px-2 py-0.5 rounded font-medium">กดปุ่มสีแดง</span>
-              </div>
-              <div class="rounded-xl overflow-hidden border border-netflix-border bg-black/40">
-                <img src="./images/guide-web-01-otp.png" alt="หน้าเว็บขอรหัสยืนยัน" class="w-full h-auto img-zoom" onclick="openLightbox(this.src, 'กรณีที่ 1 : หน้าเว็บ areslanestore.shop กดปุ่ม ตรวจสอบรหัส')">
-              </div>
-              <ul class="text-xs sm:text-sm text-gray-300 space-y-1.5 pl-1">
-                <li>• ไปที่เว็บ <strong>areslanestore.shop</strong> เลือกหัวข้อที่ 1</li>
-                <li>• กดปุ่มสีแดง <strong>[ ตรวจสอบรหัส ]</strong></li>
-                <li>• คลิกที่ตัวเลข 4 หลักเพื่อคัดลอก แล้วนำไปใส่ใน Netflix ดูได้ทันที!</li>
-              </ul>
-            </div>
-          </div>
+      <!-- CASE 1: ขอรหัส OTP (2 รูป) -->
+      <div id="case-1" class="case-section space-y-4 sm:space-y-6">
+        <div class="img-box">
+          <img src="./images/guide-device-01-netflix.png" alt="กรณี 1 หน้าจอ Netflix" onclick="openLightbox(this.src)">
+        </div>
+        <div class="img-box">
+          <img src="./images/guide-web-01-otp.png" alt="กรณี 1 หน้าเว็บ" onclick="openLightbox(this.src)">
         </div>
       </div>
 
-      <!-- CASE 2: มือถือ / แท็บเล็ต / คอมพิวเตอร์ ติดครัวเรือน -->
-      <div id="case-2" class="case-section hidden space-y-6">
-        <div class="bg-netflix-card border border-netflix-border rounded-2xl p-5 sm:p-6 shadow-xl">
-          <div class="flex items-center gap-3 mb-4 border-b border-netflix-border pb-3">
-            <span class="bg-netflix-red text-white text-xs font-black px-2.5 py-1 rounded">กรณีที่ 2</span>
-            <h3 class="text-lg sm:text-xl font-bold text-white">มือถือ / แท็บเล็ต / คอมพิวเตอร์ ขึ้น "อุปกรณ์ไม่ได้เป็นส่วนหนึ่งของครัวเรือน"</h3>
-          </div>
-
-          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
-            
-            <!-- Mobile Screen -->
-            <div class="space-y-3">
-              <div class="text-xs font-bold text-yellow-400 flex items-center gap-1.5">
-                <i data-lucide="smartphone" class="w-4 h-4"></i> 1. หน้าจอมือถือ / แท็บเล็ต
-              </div>
-              <div class="rounded-xl overflow-hidden border border-netflix-border bg-black/40">
-                <img src="./images/guide-device-02-mobile.png" alt="หน้าจอมือถือ รับชมชั่วคราว" class="w-full h-auto img-zoom" onclick="openLightbox(this.src, 'กรณีที่ 2 : หน้าจอมือถือ กดปุ่ม Regarder temporairement')">
-              </div>
-              <p class="text-xs sm:text-sm text-gray-300">
-                กดปุ่ม <strong>[ Regarder temporairement ]</strong> (รับชมชั่วคราว) แล้วกดส่งอีเมล
-              </p>
-            </div>
-
-            <!-- PC Screen -->
-            <div class="space-y-3">
-              <div class="text-xs font-bold text-yellow-400 flex items-center gap-1.5">
-                <i data-lucide="laptop" class="w-4 h-4"></i> 2. หน้าจอคอมพิวเตอร์ / PC
-              </div>
-              <div class="rounded-xl overflow-hidden border border-netflix-border bg-black/40">
-                <img src="./images/guide-device-02-pc.png" alt="หน้าจอคอม Watch temporarily" class="w-full h-auto img-zoom" onclick="openLightbox(this.src, 'กรณีที่ 2 : หน้าจอคอมพิวเตอร์ กดปุ่ม Watch temporarily')">
-              </div>
-              <p class="text-xs sm:text-sm text-gray-300">
-                กดปุ่ม <strong>[ Watch temporarily ]</strong> แล้วกด Send email รอ 5-10 วินาที
-              </p>
-            </div>
-
-            <!-- Web Screen -->
-            <div class="space-y-3">
-              <div class="text-xs font-bold text-accent-green flex items-center gap-1.5">
-                <i data-lucide="globe" class="w-4 h-4"></i> 3. หน้าเว็บ areslanestore.shop
-              </div>
-              <div class="rounded-xl overflow-hidden border border-netflix-border bg-black/40">
-                <img src="./images/guide-web-02-household.png" alt="หน้าเว็บอุปกรณ์ติดครัวเรือน" class="w-full h-auto img-zoom" onclick="openLightbox(this.src, 'กรณีที่ 2 : หน้าเว็บ areslanestore.shop กดปุ่ม รับรหัส')">
-              </div>
-              <p class="text-xs sm:text-sm text-gray-300">
-                เข้าเว็บเลือกข้อ 2 แล้วกดปุ่มสีแดง <strong>[ รับรหัส ]</strong> นำรหัสไปใส่ที่อุปกรณ์ ปลดล็อกดูต่อได้ทันที!
-              </p>
-            </div>
-
-          </div>
+      <!-- CASE 2: มือถือ / แท็บเล็ต / คอมพิวเตอร์ (3 รูป) -->
+      <div id="case-2" class="case-section hidden space-y-4 sm:space-y-6">
+        <div class="img-box">
+          <img src="./images/guide-device-02-mobile.png" alt="กรณี 2 หน้าจอมือถือ" onclick="openLightbox(this.src)">
+        </div>
+        <div class="img-box">
+          <img src="./images/guide-device-02-pc.png" alt="กรณี 2 หน้าจอคอมพิวเตอร์" onclick="openLightbox(this.src)">
+        </div>
+        <div class="img-box">
+          <img src="./images/guide-web-02-household.png" alt="กรณี 2 หน้าเว็บ" onclick="openLightbox(this.src)">
         </div>
       </div>
 
-      <!-- CASE 3: Smart TV ติดครัวเรือน -->
-      <div id="case-3" class="case-section hidden space-y-6">
-        <div class="bg-netflix-card border border-netflix-border rounded-2xl p-5 sm:p-6 shadow-xl">
-          <div class="flex items-center gap-3 mb-4 border-b border-netflix-border pb-3">
-            <span class="bg-netflix-red text-white text-xs font-black px-2.5 py-1 rounded">กรณีที่ 3</span>
-            <h3 class="text-lg sm:text-xl font-bold text-white">Smart TV ขึ้น "ทีวีของคุณไม่ได้เป็นส่วนหนึ่งของครัวเรือน Netflix"</h3>
-          </div>
-
-          <!-- TV Screen First -->
-          <div class="bg-[#15151A] border border-netflix-border rounded-xl p-4 mb-6">
-            <div class="flex flex-col md:flex-row gap-5 items-center">
-              <div class="w-full md:w-1/2 rounded-xl overflow-hidden border border-netflix-border">
-                <img src="./images/guide-device-03-tv.png" alt="หน้าจอทีวี นั่นคือบัญชีของฉัน" class="w-full h-auto img-zoom" onclick="openLightbox(this.src, 'กรณีที่ 3 : หน้าจอ Smart TV กดปุ่ม นั่นคือบัญชีของฉัน')">
-              </div>
-              <div class="w-full md:w-1/2 space-y-3">
-                <div class="inline-flex items-center gap-2 bg-yellow-500/20 text-yellow-300 border border-yellow-500/40 text-xs font-bold px-3 py-1 rounded-full">
-                  ขั้นตอนที่ 1 บนทีวี
-                </div>
-                <h4 class="text-lg font-bold text-white">บนรีโมททีวี กดเลือกปุ่มในกรอบสีเหลือง</h4>
-                <p class="text-sm text-gray-300">
-                  กดปุ่ม <strong class="text-yellow-400">[ นั่นคือบัญชีของฉัน ] (To jest Moje konto)</strong> จากนั้นดูว่าบนหน้าจอทีวีของคุณมีปุ่มไหนให้เลือกต่อ:
-                </p>
-                <div class="grid grid-cols-2 gap-3 pt-2">
-                  <div class="bg-netflix-card border border-netflix-border p-3 rounded-lg text-xs">
-                    <strong class="text-white block font-bold">แบบ A : มีปุ่มเดินทาง</strong>
-                    <span class="text-gray-400">เลือก 'ฉันกำลังเดินทาง' -> ส่งอีเมล</span>
-                  </div>
-                  <div class="bg-netflix-card border border-netflix-border p-3 rounded-lg text-xs">
-                    <strong class="text-white block font-bold">แบบ B : ไม่มีปุ่มเดินทาง</strong>
-                    <span class="text-gray-400">เลือก 'อัปเดตครัวเรือน' -> ส่งอีเมล</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 2 Types on Web -->
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-            
-            <!-- Type A Web -->
-            <div class="space-y-3 bg-[#15151A] p-4 rounded-xl border border-netflix-border">
-              <span class="text-xs font-bold text-accent-green flex items-center gap-1.5">
-                <i data-lucide="check-circle-2" class="w-4 h-4"></i> แบบ A : ทีวีมีปุ่ม "ฉันกำลังเดินทาง"
-              </span>
-              <div class="rounded-xl overflow-hidden border border-netflix-border bg-black/40">
-                <img src="./images/guide-web-03a-travel.png" alt="ทีวีมีปุ่มเดินทาง" class="w-full h-auto img-zoom" onclick="openLightbox(this.src, 'กรณี 3 แบบ A : หน้าเว็บกดปุ่ม รับรหัส')">
-              </div>
-              <p class="text-xs sm:text-sm text-gray-300">
-                1. บนหน้าเว็บหัวข้อ 3 คลิกที่ <strong>"ฉันกำลังเดินทาง"</strong><br>
-                2. กดปุ่มสีแดง <strong>[ รับรหัส ]</strong><br>
-                3. นำรหัสไปกรอกบนหน้าจอทีวี ทีวีจะเล่นหนังได้ทันที!
-              </p>
-            </div>
-
-            <!-- Type B Web -->
-            <div class="space-y-3 bg-[#15151A] p-4 rounded-xl border border-netflix-border">
-              <span class="text-xs font-bold text-accent-yellow flex items-center gap-1.5">
-                <i data-lucide="refresh-cw" class="w-4 h-4"></i> แบบ B : ทีวีไม่มีปุ่มเดินทาง (อัปเดตครัวเรือน)
-              </span>
-              <div class="rounded-xl overflow-hidden border border-netflix-border bg-black/40">
-                <img src="./images/guide-web-03b-update.png" alt="ทีวีอัปเดตครัวเรือน" class="w-full h-auto img-zoom" onclick="openLightbox(this.src, 'กรณี 3 แบบ B : หน้าเว็บกดปุ่ม ปลดล็อคทีวีของฉัน')">
-              </div>
-              <p class="text-xs sm:text-sm text-gray-300">
-                1. รอ 10 วินาทีหลังกดส่งเมลบนทีวี<br>
-                2. บนหน้าเว็บกดปุ่ม <strong>[ ปลดล็อคทีวีของฉัน ]</strong><br>
-                3. หน้าเว็บจะเด้งปุ่มยืนยัน ให้กด <strong>'ใช่ ฉันทำ' (Yes, This Was Me)</strong> ทีวีจะปลดล็อกทันที!
-              </p>
-            </div>
-
-          </div>
-
+      <!-- CASE 3: Smart TV (3 รูป) -->
+      <div id="case-3" class="case-section hidden space-y-4 sm:space-y-6">
+        <div class="img-box">
+          <img src="./images/guide-device-03-tv.png" alt="กรณี 3 หน้าจอทีวี" onclick="openLightbox(this.src)">
         </div>
-      </div>
-
-    </section>
-
-    <!-- ========================================================================= -->
-    <!-- MENU 3: ทริคสำคัญ & วิธีแก้ปัญหา (FAQ & Troubleshooting) -->
-    <!-- ========================================================================= -->
-    <section id="tab-faq" class="hidden space-y-6">
-      
-      <div class="bg-gradient-to-r from-blue-950/40 via-netflix-card to-[#16161D] border border-blue-900/40 rounded-2xl p-5 sm:p-6 shadow-xl">
-        <h2 class="text-xl sm:text-2xl font-extrabold text-white flex items-center gap-2">
-          <i data-lucide="lightbulb" class="w-6 h-6 text-yellow-400"></i> ทริคและวิธีแก้ไขปัญหาเบื้องต้น
-        </h2>
-        <p class="text-sm text-gray-300 mt-1">รวบรวมวิธีแก้ปัญหาที่พบบ่อย ช่วยให้คุณดูต่อได้อย่างราบรื่น</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-        
-        <!-- FAQ 1: Airplane Mode -->
-        <div class="bg-netflix-card border border-netflix-border rounded-xl p-5 space-y-2.5">
-          <div class="flex items-center gap-2 text-accent-green font-bold text-base">
-            <i data-lucide="plane" class="w-5 h-5"></i>
-            <span>เทคนิคเปิดโหมดเครื่องบิน (แก้ติดยืนยันเบอร์)</span>
-          </div>
-          <p class="text-sm text-gray-300 leading-relaxed">
-            หากเข้าสู่ระบบแล้วติดยืนยันเบอร์โทรศัพท์ ให้เปิด <strong>โหมดเครื่องบิน (Airplane Mode)</strong> ทิ้งไว้ 10-15 วินาที แล้วปิด เพื่อรีเซ็ต IP เครือข่ายใหม่ จากนั้นเปิดแอพแล้วกดเข้าสู่ระบบอีกครั้ง
-          </p>
+        <div class="img-box">
+          <img src="./images/guide-web-03a-travel.png" alt="กรณี 3 แบบ A" onclick="openLightbox(this.src)">
         </div>
-
-        <!-- FAQ 2: รหัสไม่ขึ้นในเว็บ -->
-        <div class="bg-netflix-card border border-netflix-border rounded-xl p-5 space-y-2.5">
-          <div class="flex items-center gap-2 text-yellow-400 font-bold text-base">
-            <i data-lucide="clock" class="w-5 h-5"></i>
-            <span>กดปุ่มในเว็บแล้วยังไม่พบรหัส?</span>
-          </div>
-          <p class="text-sm text-gray-300 leading-relaxed">
-            ตรวจสอบว่าบนหน้าจออุปกรณ์ของคุณได้กดปุ่ม <strong>"ส่งรหัสทางอีเมล" (Send Email)</strong> หรือยัง ถ้ากดแล้วให้รอประมาณ 10-15 วินาทีเพื่อให้ระบบอีเมลนำส่งรหัสเข้าสู่หน้าเว็บ แล้วกดปุ่ม <strong>[ ตรวจสอบรหัส ]</strong> อีกครั้ง
-          </p>
+        <div class="img-box">
+          <img src="./images/guide-web-03b-update.png" alt="กรณี 3 แบบ B" onclick="openLightbox(this.src)">
         </div>
-
-        <!-- FAQ 3: กฎการใช้งานโปรไฟล์ -->
-        <div class="bg-netflix-card border border-netflix-border rounded-xl p-5 space-y-2.5">
-          <div class="flex items-center gap-2 text-red-400 font-bold text-base">
-            <i data-lucide="user-x" class="w-5 h-5"></i>
-            <span>ข้อห้ามในการใช้งานโปรไฟล์</span>
-          </div>
-          <p class="text-sm text-gray-300 leading-relaxed">
-            • ห้ามเปลี่ยนชื่อโปรไฟล์ หรือรูปภาพโปรไฟล์<br>
-            • ห้ามตั้งรหัสล็อคโปรไฟล์ (PIN) ยกเว้นได้รับอนุญาตจากร้าน<br>
-            • เข้าใช้งานเฉพาะโปรไฟล์ช่องที่ทางร้านระบุไว้เท่านั้น
-          </p>
-        </div>
-
-        <!-- FAQ 4: ติดต่อร้าน -->
-        <div class="bg-netflix-card border border-netflix-border rounded-xl p-5 space-y-2.5">
-          <div class="flex items-center gap-2 text-blue-400 font-bold text-base">
-            <i data-lucide="message-circle" class="w-5 h-5"></i>
-            <span>ต้องการความช่วยเหลือเพิ่มเติม?</span>
-          </div>
-          <p class="text-sm text-gray-300 leading-relaxed">
-            หากทำตามขั้นตอนแล้วยังไม่สามารถรับชมได้ สามารถแคปเจอร์ภาพหน้าจอที่ติดปัญหา แล้วส่งให้แอดมินทางช่องทางแชทของร้าน OneStop AI ได้ตลอดเวลาครับ แอดมินพร้อมดูแลทันที!
-          </p>
-        </div>
-
       </div>
 
     </section>
 
   </main>
 
-  <!-- LIGHTBOX / IMAGE MODAL -->
-  <div id="lightbox" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm hidden items-center justify-center p-4" onclick="closeLightbox()">
-    <div class="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center" onclick="event.stopPropagation()">
-      <button onclick="closeLightbox()" class="absolute -top-12 right-0 text-gray-300 hover:text-white bg-white/10 hover:bg-white/20 p-2 rounded-full transition">
+  <!-- LIGHTBOX (ZOOM MODAL) -->
+  <div id="lightbox" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm hidden items-center justify-center p-2 sm:p-4" onclick="closeLightbox()">
+    <div class="relative max-w-5xl w-full max-h-[95vh] flex flex-col items-center" onclick="event.stopPropagation()">
+      <button onclick="closeLightbox()" class="absolute -top-11 right-0 text-gray-300 hover:text-white bg-white/10 hover:bg-white/20 p-2 rounded-full transition">
         <i data-lucide="x" class="w-6 h-6"></i>
       </button>
-      <img id="lightbox-img" src="" alt="ภาพขยาย" class="max-w-full max-h-[80vh] rounded-xl object-contain shadow-2xl border border-white/10">
-      <p id="lightbox-caption" class="text-white text-sm sm:text-base font-semibold mt-3 text-center bg-black/60 px-4 py-1.5 rounded-full border border-white/10"></p>
+      <img id="lightbox-img" src="" alt="ภาพขยาย" class="max-w-full max-h-[88vh] rounded-lg object-contain shadow-2xl">
     </div>
   </div>
 
-  <!-- FOOTER -->
-  <footer class="mt-16 border-t border-netflix-border py-6 text-center text-xs text-gray-500">
-    <p>© ONESTOP AI — ศูนย์รวมบริการและคู่มือความช่วยเหลือ Netflix อัตโนมัติ 24 ชั่วโมง</p>
-    <p class="mt-1">ระบบพัฒนาขึ้นเพื่ออำนวยความสะดวกในการใช้งานของลูกค้า OneStop AI เท่านั้น</p>
-  </footer>
-
-  <!-- SCRIPT LOGIC -->
+  <!-- SCRIPT -->
   <script>
     // Tab Switching
     function switchTab(tabId) {
       document.getElementById('tab-login').classList.add('hidden');
       document.getElementById('tab-areslane').classList.add('hidden');
-      document.getElementById('tab-faq').classList.add('hidden');
 
       document.getElementById('btn-tab-login').classList.remove('active-tab');
       document.getElementById('btn-tab-areslane').classList.remove('active-tab');
-      document.getElementById('btn-tab-faq').classList.remove('active-tab');
 
       document.getElementById(tabId).classList.remove('hidden');
       document.getElementById('btn-' + tabId).classList.add('active-tab');
@@ -590,13 +228,11 @@
       btn.classList.remove('text-gray-400');
     }
 
-    // Lightbox Modal
-    function openLightbox(src, caption) {
+    // Lightbox
+    function openLightbox(src) {
       const modal = document.getElementById('lightbox');
       const img = document.getElementById('lightbox-img');
-      const cap = document.getElementById('lightbox-caption');
       img.src = src;
-      cap.textContent = caption || '';
       modal.classList.remove('hidden');
       modal.classList.add('flex');
       document.body.style.overflow = 'hidden';
@@ -610,12 +246,10 @@
       document.body.style.overflow = '';
     }
 
-    // Close on Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeLightbox();
     });
 
-    // Initialize Lucide Icons
     lucide.createIcons();
   </script>
 </body>
