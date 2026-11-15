@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html lang="th" class="dark">
+<html lang="th">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ONESTOP AI — ศูนย์รวมคู่มือการใช้งานและวิธีแก้ปัญหา</title>
+  <title>ONESTOP AI — ศูนย์คู่มือและวิธีใช้งานสินค้า</title>
   <!-- Google Fonts: Prompt -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&display=swap" rel="stylesheet">
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>
     tailwind.config = {
-      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
@@ -22,20 +21,11 @@
           },
           colors: {
             brand: {
-              dark: '#0A0B10',
-              card: '#12131A',
-              cardHover: '#181924',
-              border: '#232533',
-              cyan: '#00D2FF',
-              blue: '#0070F3',
-            },
-            netflix: {
-              red: '#E50914',
-              redHover: '#B80710',
-            },
-            windows: {
-              blue: '#00A4EF',
-              dark: '#0B1E38',
+              black: '#0F172A',
+              sub: '#475569',
+              light: '#F8FAFC',
+              border: '#E2E8F0',
+              blue: '#2563EB',
             }
           }
         }
@@ -44,243 +34,269 @@
   </script>
   <style>
     body {
-      background-color: #0A0B10;
-      color: #F3F4F6;
+      background-color: #FAFAFA;
+      color: #0F172A;
       font-family: 'Prompt', sans-serif;
       -webkit-tap-highlight-color: transparent;
     }
-    .active-nav-tab {
-      background: linear-gradient(135deg, #0070F3, #00D2FF) !important;
-      color: #FFFFFF !important;
-      box-shadow: 0 4px 16px rgba(0, 210, 255, 0.35);
+    .active-pill {
+      background-color: #FFFFFF !important;
+      color: #0F172A !important;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+      font-weight: 600;
     }
-    .active-netflix-tab {
-      background-color: #E50914 !important;
-      color: #FFFFFF !important;
-      box-shadow: 0 4px 16px rgba(229, 9, 20, 0.45);
+    .card-hover {
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .active-windows-tab {
-      background-color: #00A4EF !important;
-      color: #FFFFFF !important;
-      box-shadow: 0 4px 16px rgba(0, 164, 239, 0.45);
-    }
-    .glass-panel {
-      background: rgba(18, 19, 26, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .img-zoom {
-      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .img-zoom:hover {
-      transform: scale(1.015);
+    .card-hover:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.08);
+      border-color: #CBD5E1;
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col antialiased selection:bg-brand-cyan selection:text-black">
+<body class="min-h-screen flex flex-col antialiased">
 
   <!-- ========================================== -->
-  <!-- TOP GLOBAL HEADER BAR                      -->
+  <!-- MINIMAL HEADER                             -->
   <!-- ========================================== -->
-  <header class="sticky top-0 z-50 glass-panel border-b border-brand-border">
-    <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
-      <!-- Brand Logo / Back Button -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200/80">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      
+      <!-- Brand & Back Button -->
       <div class="flex items-center gap-3">
-        <button id="headerBackBtn" onclick="switchView('home')" class="hidden items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-sm font-semibold transition text-gray-200">
+        <button id="headerBackBtn" onclick="switchView('home')" class="hidden items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 text-xs font-semibold text-gray-700 transition">
           <i data-lucide="arrow-left" class="w-4 h-4"></i>
-          <span>กลับหน้าหลัก</span>
+          <span>หน้าหลัก</span>
         </button>
 
-        <a href="javascript:void(0)" onclick="switchView('home')" class="flex items-center gap-2 group">
-          <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-blue to-brand-cyan flex items-center justify-center font-black text-black shadow-md shadow-brand-cyan/20 group-hover:scale-105 transition">
+        <a href="javascript:void(0)" onclick="switchView('home')" class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-xl bg-gray-900 text-white flex items-center justify-center font-bold text-sm shadow-sm">
             1
           </div>
           <div>
-            <div class="flex items-center gap-2">
-              <span class="font-bold text-base tracking-wide text-white">ONESTOP AI</span>
-              <span class="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-brand-cyan/20 text-brand-cyan border border-brand-cyan/30">HELP CENTER</span>
+            <div class="flex items-center gap-1.5">
+              <span class="font-bold text-base tracking-tight text-gray-900">ONESTOP AI</span>
+              <span class="text-[10px] font-semibold tracking-wide px-1.5 py-0.5 rounded bg-gray-100 text-gray-600 border border-gray-200">คู่มือ</span>
             </div>
-            <p class="text-[11px] text-gray-400">ศูนย์รวมคู่มือการใช้งาน</p>
+            <p class="text-[11px] text-gray-500 leading-none">ศูนย์ช่วยเหลือและวิธีใช้งาน</p>
           </div>
         </a>
       </div>
 
-      <!-- Quick Support Status -->
+      <!-- Online Support Badge -->
       <div class="flex items-center gap-2">
-        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          พร้อมบริการ 24 ชม.
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          บริการช่วยเหลือ 24 ชม.
         </span>
       </div>
+
     </div>
   </header>
 
   <!-- ========================================== -->
-  <!-- VIEW 1: HOME PORTAL (ศูนย์รวมการ์ดสินค้า)   -->
+  <!-- VIEW 1: HOME PORTAL (MINIMAL PRODUCT CARDS)-->
   <!-- ========================================== -->
-  <main id="homeView" class="flex-grow max-w-4xl w-full mx-auto px-4 py-8">
+  <main id="homeView" class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 py-8 sm:py-12">
     
-    <!-- Hero Header -->
-    <div class="text-center mb-8">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-brand-blue/20 text-brand-cyan border border-brand-cyan/30 mb-3">
-        <i data-lucide="book-open-check" class="w-3.5 h-3.5"></i>
-        <span>เลือกสินค้าเพื่อเปิดดูขั้นตอนและวิธีแก้ปัญหา</span>
-      </div>
-      <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-2">
-        ยินดีต้อนรับสู่ศูนย์ช่วยเหลือลูกค้า
+    <!-- Hero Title -->
+    <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-2.5">
+        ศูนย์รวมคู่มือการใช้งานสินค้า
       </h1>
-      <p class="text-sm sm:text-base text-gray-400 max-w-lg mx-auto">
-        รวบรวมคู่มือภาพทีละขั้นตอน อัปเดตใหม่ล่าสุด เข้าใจง่าย ทำตามได้ใน 3 นาที
+      <p class="text-sm sm:text-base text-gray-500 font-normal">
+        เลือกสินค้าที่คุณสั่งซื้อ เพื่อดูขั้นตอนการเปิดใช้งานและวิธีแก้ปัญหาทีละสเต็ป
       </p>
 
       <!-- Search Input -->
       <div class="relative max-w-md mx-auto mt-6">
-        <i data-lucide="search" class="w-5 h-5 absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400"></i>
+        <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400"></i>
         <input 
           type="text" 
           id="productSearch" 
           onkeyup="filterProducts()" 
-          placeholder="ค้นหาคู่มือสินค้า (เช่น Netflix, Windows, Office)..." 
-          class="w-full pl-11 pr-4 py-3 rounded-xl bg-brand-card border border-brand-border text-white placeholder-gray-500 focus:outline-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20 transition text-sm font-medium shadow-inner"
+          placeholder="ค้นหาชื่อสินค้า (เช่น Netflix, Windows, Office)..." 
+          class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition text-sm shadow-sm"
         >
       </div>
     </div>
 
-    <!-- Product Cards Grid -->
+    <!-- Product Grid: 1 col on mobile, 2 cols on tablet/desktop -->
     <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
       
       <!-- CARD 1: NETFLIX -->
-      <div class="product-item group cursor-pointer rounded-2xl glass-panel p-5 border border-brand-border hover:border-netflix-red/60 hover:shadow-xl hover:shadow-netflix-red/10 transition-all duration-300" onclick="switchView('netflix')">
-        <div class="flex items-start justify-between mb-4">
-          <div class="w-12 h-12 rounded-xl bg-netflix-red/10 border border-netflix-red/30 flex items-center justify-center text-netflix-red group-hover:scale-110 group-hover:bg-netflix-red group-hover:text-white transition duration-300">
-            <i data-lucide="tv-minimal-play" class="w-6 h-6"></i>
+      <div class="product-item card-hover group cursor-pointer bg-white rounded-2xl p-5 sm:p-6 border border-gray-200/90 shadow-sm flex flex-col justify-between" onclick="switchView('netflix')">
+        <div>
+          <!-- Top Row: Icon + Badge -->
+          <div class="flex items-center justify-between mb-4">
+            <!-- Official Netflix Icon Box -->
+            <div class="w-12 h-12 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center p-2.5">
+              <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none">
+                <path d="M4 2v20c1.7-.3 3.3-.6 5-1V2H4zm11 0v17.4c1.7-.5 3.3-1.1 5-1.7V2h-5z" fill="#B81D24"/>
+                <path d="M4 2l11 19.4c1.7-.5 3.3-1.1 5-1.7L9 2H4z" fill="#E50914"/>
+              </svg>
+            </div>
+            <span class="inline-flex items-center gap-1 text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-red-50 text-red-600 border border-red-100">
+              พร้อมใช้งาน
+            </span>
           </div>
-          <span class="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full bg-netflix-red/20 text-red-400 border border-netflix-red/30">
-            คู่มือพร้อมใช้งาน
-          </span>
+
+          <h3 class="text-lg font-bold text-gray-900 group-hover:text-red-600 transition mb-1 flex items-center gap-1">
+            <span>Netflix</span>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 group-hover:translate-x-1 transition"></i>
+          </h3>
+          <p class="text-xs text-gray-500 mb-4 line-clamp-2">
+            วิธีเข้าสู่ระบบ 5 ขั้นตอน & วิธีใช้งานเว็บขอรหัส OTP และแก้ปัญหาครัวเรือน
+          </p>
         </div>
-        <h3 class="text-lg font-bold text-white group-hover:text-red-400 transition mb-1.5 flex items-center gap-1.5">
-          <span>Netflix (เน็ตฟลิกซ์)</span>
-          <i data-lucide="chevron-right" class="w-4 h-4 text-gray-500 group-hover:translate-x-1 transition"></i>
-        </h3>
-        <p class="text-xs text-gray-400 mb-4 line-clamp-2">
-          ขั้นตอนเข้าใช้งานครั้งแรก 5 สเต็ป & วิธีใช้เว็บขอรหัส OTP / อัปเดตบ้านครัวเรือน
-        </p>
-        <div class="flex flex-wrap gap-1.5 text-[11px] font-medium text-gray-300">
-          <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">5 ขั้นตอนเข้าสู่ระบบ</span>
-          <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">แก้ครัวเรือนชั่วคราว</span>
-          <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">รับรหัส OTP</span>
+
+        <div class="pt-3 border-t border-gray-100 flex flex-wrap gap-1.5 text-[11px] text-gray-600">
+          <span class="px-2 py-0.5 rounded-md bg-gray-50 border border-gray-200/60">เข้าสู่ระบบ 5 สเต็ป</span>
+          <span class="px-2 py-0.5 rounded-md bg-gray-50 border border-gray-200/60">เว็บรับรหัส OTP</span>
+          <span class="px-2 py-0.5 rounded-md bg-gray-50 border border-gray-200/60">แก้ติดครัวเรือน</span>
         </div>
       </div>
 
       <!-- CARD 2: WINDOWS PRO -->
-      <div class="product-item group cursor-pointer rounded-2xl glass-panel p-5 border border-brand-border hover:border-windows-blue/60 hover:shadow-xl hover:shadow-windows-blue/10 transition-all duration-300" onclick="switchView('windows')">
-        <div class="flex items-start justify-between mb-4">
-          <div class="w-12 h-12 rounded-xl bg-windows-blue/10 border border-windows-blue/30 flex items-center justify-center text-windows-blue group-hover:scale-110 group-hover:bg-windows-blue group-hover:text-white transition duration-300">
-            <i data-lucide="monitor" class="w-6 h-6"></i>
+      <div class="product-item card-hover group cursor-pointer bg-white rounded-2xl p-5 sm:p-6 border border-gray-200/90 shadow-sm flex flex-col justify-between" onclick="switchView('windows')">
+        <div>
+          <!-- Top Row: Icon + Badge -->
+          <div class="flex items-center justify-between mb-4">
+            <!-- Official Windows Icon Box -->
+            <div class="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center p-2.5">
+              <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none">
+                <rect x="2" y="2" width="9" height="9" rx="1" fill="#0078D4"/>
+                <rect x="13" y="2" width="9" height="9" rx="1" fill="#0078D4"/>
+                <rect x="2" y="13" width="9" height="9" rx="1" fill="#0078D4"/>
+                <rect x="13" y="13" width="9" height="9" rx="1" fill="#0078D4"/>
+              </svg>
+            </div>
+            <span class="inline-flex items-center gap-1 text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-600 border border-blue-100">
+              พร้อมใช้งาน
+            </span>
           </div>
-          <span class="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full bg-windows-blue/20 text-cyan-400 border border-windows-blue/30">
-            คู่มือพร้อมใช้งาน
-          </span>
+
+          <h3 class="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition mb-1 flex items-center gap-1">
+            <span>Windows 11 / 10 Pro</span>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 group-hover:translate-x-1 transition"></i>
+          </h3>
+          <p class="text-xs text-gray-500 mb-4 line-clamp-2">
+            3 ขั้นตอนใส่คีย์ Retail แท้, วิธีอัปเกรดจาก Home เป็น Pro & วิธีแก้ปัญหาคีย์ไม่เข้า
+          </p>
         </div>
-        <h3 class="text-lg font-bold text-white group-hover:text-cyan-400 transition mb-1.5 flex items-center gap-1.5">
-          <span>Windows 11 / 10 Pro Retail</span>
-          <i data-lucide="chevron-right" class="w-4 h-4 text-gray-500 group-hover:translate-x-1 transition"></i>
-        </h3>
-        <p class="text-xs text-gray-400 mb-4 line-clamp-2">
-          3 ขั้นตอนการใส่คีย์แท้ 25 หลัก, การอัปเกรดจาก Home เป็น Pro & วิธีแก้ปัญหาคีย์ไม่เข้า
-        </p>
-        <div class="flex flex-wrap gap-1.5 text-[11px] font-medium text-gray-300">
-          <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">เปิดใช้งานออนไลน์</span>
-          <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">อัปเกรด Home เป็น Pro</span>
-          <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">แก้ Error 0x80070490</span>
+
+        <div class="pt-3 border-t border-gray-100 flex flex-wrap gap-1.5 text-[11px] text-gray-600">
+          <span class="px-2 py-0.5 rounded-md bg-gray-50 border border-gray-200/60">ใส่คีย์ 3 สเต็ป</span>
+          <span class="px-2 py-0.5 rounded-md bg-gray-50 border border-gray-200/60">อัปเกรด Home เป็น Pro</span>
+          <span class="px-2 py-0.5 rounded-md bg-gray-50 border border-gray-200/60">แก้ Error 0x80070490</span>
         </div>
       </div>
 
       <!-- CARD 3: MS OFFICE 2021 -->
-      <div class="product-item rounded-2xl glass-panel p-5 border border-brand-border opacity-80 hover:opacity-100 transition duration-300">
-        <div class="flex items-start justify-between mb-4">
-          <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-500">
-            <i data-lucide="file-text" class="w-6 h-6"></i>
+      <div class="product-item bg-white/70 rounded-2xl p-5 sm:p-6 border border-gray-200/80 shadow-sm flex flex-col justify-between opacity-80 hover:opacity-100 transition">
+        <div>
+          <!-- Top Row: Icon + Badge -->
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center p-2.5">
+              <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none">
+                <rect x="2" y="2" width="20" height="20" rx="4" fill="#D83B01"/>
+                <path d="M7 6h5.5a4.5 4.5 0 014.5 4.5v3a4.5 4.5 0 01-4.5 4.5H7V6z" fill="#FFFFFF"/>
+              </svg>
+            </div>
+            <span class="inline-flex items-center gap-1 text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-500">
+              เร็วๆ นี้
+            </span>
           </div>
-          <span class="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
-            เร็วๆ นี้
-          </span>
+
+          <h3 class="text-lg font-bold text-gray-900 mb-1">
+            Microsoft Office 2021 Pro Plus
+          </h3>
+          <p class="text-xs text-gray-500 mb-4 line-clamp-2">
+            ลิงก์ดาวน์โหลดตัวติดตั้งแท้จาก Microsoft & ขั้นตอนใส่รหัสคีย์เปิดใช้งานถาวร
+          </p>
         </div>
-        <h3 class="text-lg font-bold text-white mb-1.5 flex items-center gap-1.5">
-          <span>Microsoft Office 2021 Pro Plus</span>
-        </h3>
-        <p class="text-xs text-gray-400 mb-4 line-clamp-2">
-          ลิงก์ดาวน์โหลดตัวติดตั้งแท้ตรงจาก Microsoft & ขั้นตอนใส่รหัสคีย์ตลอดชีพ
-        </p>
-        <div class="flex flex-wrap gap-1.5 text-[11px] font-medium text-gray-400">
-          <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">Word / Excel / PowerPoint</span>
-          <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">ลิขสิทธิ์ถาวร</span>
+
+        <div class="pt-3 border-t border-gray-100 flex flex-wrap gap-1.5 text-[11px] text-gray-400">
+          <span class="px-2 py-0.5 rounded-md bg-gray-50 border border-gray-200/60">Word / Excel / PowerPoint</span>
+          <span class="px-2 py-0.5 rounded-md bg-gray-50 border border-gray-200/60">ตลอดชีพ</span>
         </div>
       </div>
 
       <!-- CARD 4: CAPCUT PRO -->
-      <div class="product-item rounded-2xl glass-panel p-5 border border-brand-border opacity-80 hover:opacity-100 transition duration-300">
-        <div class="flex items-start justify-between mb-4">
-          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
-            <i data-lucide="video" class="w-6 h-6"></i>
+      <div class="product-item bg-white/70 rounded-2xl p-5 sm:p-6 border border-gray-200/80 shadow-sm flex flex-col justify-between opacity-80 hover:opacity-100 transition">
+        <div>
+          <!-- Top Row: Icon + Badge -->
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center p-2.5">
+              <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none">
+                <path d="M19.5 7.5L12 12l7.5 4.5V7.5zM4.5 16.5L12 12 4.5 7.5v9z" fill="#0F172A"/>
+              </svg>
+            </div>
+            <span class="inline-flex items-center gap-1 text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-500">
+              เร็วๆ นี้
+            </span>
           </div>
-          <span class="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-            เร็วๆ นี้
-          </span>
+
+          <h3 class="text-lg font-bold text-gray-900 mb-1">
+            CapCut Pro (บัญชีส่วนตัว)
+          </h3>
+          <p class="text-xs text-gray-500 mb-4 line-clamp-2">
+            ขั้นตอนล็อกอินเข้าใช้งานบัญชีส่วนตัว & วิธีตั้งค่าส่งออกวิดีโอระดับโปร
+          </p>
         </div>
-        <h3 class="text-lg font-bold text-white mb-1.5 flex items-center gap-1.5">
-          <span>CapCut Pro (บัญชีส่วนตัว)</span>
-        </h3>
-        <p class="text-xs text-gray-400 mb-4 line-clamp-2">
-          วิธีล็อกอินเข้าใช้งานบัญชีส่วนตัว, ปลดล็อกเอฟเฟกต์โปร & ส่งออกคลิปความละเอียด 4K
-        </p>
-        <div class="flex flex-wrap gap-1.5 text-[11px] font-medium text-gray-400">
-          <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">บัญชีเดี่ยว 100%</span>
-          <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">คลาวด์ส่วนตัว</span>
+
+        <div class="pt-3 border-t border-gray-100 flex flex-wrap gap-1.5 text-[11px] text-gray-400">
+          <span class="px-2 py-0.5 rounded-md bg-gray-50 border border-gray-200/60">บัญชีเดี่ยว 100%</span>
+          <span class="px-2 py-0.5 rounded-md bg-gray-50 border border-gray-200/60">คลาวด์ส่วนตัว</span>
         </div>
       </div>
 
     </div>
 
-    <!-- Need Help Notice -->
-    <div class="mt-10 rounded-2xl p-6 bg-gradient-to-r from-brand-card to-brand-border/40 border border-brand-border text-center">
-      <h4 class="text-base font-bold text-white mb-1">ยังไม่พบสินค้าของคุณ หรือติดปัญหาการติดตั้ง?</h4>
-      <p class="text-xs sm:text-sm text-gray-400 max-w-md mx-auto mb-4">
-        ทีมงาน ONESTOP AI พร้อมช่วยเหลือและแก้ปัญหาให้ลูกค้าทุกคนอย่างใกล้ชิด
+    <!-- Contact Support Box -->
+    <div class="mt-8 sm:mt-12 rounded-2xl p-6 bg-white border border-gray-200 text-center shadow-sm">
+      <h4 class="text-sm sm:text-base font-bold text-gray-900 mb-1">
+        ติดปัญหาการใช้งาน หรือมีคำถามเพิ่มเติม?
+      </h4>
+      <p class="text-xs sm:text-sm text-gray-500 max-w-md mx-auto mb-4">
+        ทีมงาน ONESTOP AI ยินดีช่วยเหลือและดูแลลูกค้าทุกท่านตลอดเวลาครับ
       </p>
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition border border-white/10">
-        <i data-lucide="message-square" class="w-4 h-4 text-brand-cyan"></i>
-        <span>ทักแชทหาแอดมินทางช่องทางที่คุณสั่งซื้อได้ตลอดเวลาครับ</span>
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-50 hover:bg-gray-100 text-gray-700 text-xs font-semibold border border-gray-200 transition">
+        <i data-lucide="message-circle" class="w-4 h-4 text-blue-600"></i>
+        <span>ทักแชทสอบถามทางร้านที่คุณสั่งซื้อได้ทันทีครับ</span>
       </div>
     </div>
+
   </main>
 
   <!-- ========================================== -->
   <!-- VIEW 2: NETFLIX GUIDE VIEW                 -->
   <!-- ========================================== -->
-  <main id="netflixView" class="hidden flex-grow max-w-3xl w-full mx-auto px-4 py-6">
+  <main id="netflixView" class="hidden flex-grow max-w-3xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8">
     
     <!-- Top Back Bar -->
     <div class="flex items-center justify-between mb-4">
-      <button onclick="switchView('home')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-semibold text-gray-200 transition">
+      <button onclick="switchView('home')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white hover:bg-gray-50 border border-gray-200 text-xs font-semibold text-gray-700 shadow-sm transition">
         <i data-lucide="arrow-left" class="w-4 h-4"></i>
         <span>กลับหน้าศูนย์รวมคู่มือ</span>
       </button>
-      <span class="text-xs font-bold text-netflix-red flex items-center gap-1">
-        <i data-lucide="tv" class="w-4 h-4"></i>
+      <span class="text-xs font-bold text-red-600 flex items-center gap-1">
+        <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none">
+          <path d="M4 2v20c1.7-.3 3.3-.6 5-1V2H4zm11 0v17.4c1.7-.5 3.3-1.1 5-1.7V2h-5z" fill="#B81D24"/>
+          <path d="M4 2l11 19.4c1.7-.5 3.3-1.1 5-1.7L9 2H4z" fill="#E50914"/>
+        </svg>
         <span>คู่มือ Netflix</span>
       </span>
     </div>
 
-    <!-- Netflix Guide Segment Switcher -->
-    <div class="grid grid-cols-2 gap-2 p-1.5 bg-brand-card rounded-2xl border border-brand-border mb-6">
-      <button id="netflixNavTab1" onclick="switchNetflixTab('login')" class="active-netflix-tab py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center justify-center gap-1.5">
-        <i data-lucide="log-in" class="w-4 h-4"></i>
+    <!-- Segment Switcher (Apple Style Segmented Control) -->
+    <div class="grid grid-cols-2 gap-1.5 p-1.5 bg-gray-200/70 rounded-2xl mb-6">
+      <button id="netflixNavTab1" onclick="switchNetflixTab('login')" class="active-pill py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center justify-center gap-1.5">
+        <i data-lucide="log-in" class="w-4 h-4 text-red-600"></i>
         <span>วิธีเข้าสู่ระบบ (5 สเต็ป)</span>
       </button>
-      <button id="netflixNavTab2" onclick="switchNetflixTab('otp')" class="py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold text-gray-400 hover:text-white transition-all duration-200 flex items-center justify-center gap-1.5">
+      <button id="netflixNavTab2" onclick="switchNetflixTab('otp')" class="py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold text-gray-600 hover:text-gray-900 transition-all duration-200 flex items-center justify-center gap-1.5">
         <i data-lucide="globe" class="w-4 h-4"></i>
         <span>เว็บรับรหัส & ครัวเรือน</span>
       </button>
@@ -288,19 +304,19 @@
 
     <!-- SUB-TAB 1: 5 STEPS LOGIN -->
     <section id="netflixTabLogin" class="space-y-4">
-      <div class="rounded-2xl overflow-hidden border border-brand-border bg-black shadow-lg img-zoom">
+      <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
         <img src="images/step-01-email.png" alt="ขั้นตอนที่ 1 กรอกอีเมล" class="w-full h-auto block" loading="lazy">
       </div>
-      <div class="rounded-2xl overflow-hidden border border-brand-border bg-black shadow-lg img-zoom">
+      <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
         <img src="images/step-02-help.png" alt="ขั้นตอนที่ 2 กดขอความช่วยเหลือ" class="w-full h-auto block" loading="lazy">
       </div>
-      <div class="rounded-2xl overflow-hidden border border-brand-border bg-black shadow-lg img-zoom">
+      <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
         <img src="images/step-03-password.png" alt="ขั้นตอนที่ 3 เลือกใช้รหัสผ่านแทน" class="w-full h-auto block" loading="lazy">
       </div>
-      <div class="rounded-2xl overflow-hidden border border-brand-border bg-black shadow-lg img-zoom">
+      <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
         <img src="images/step-04-enter-pwd.png" alt="ขั้นตอนที่ 4 กรอกรหัสผ่าน" class="w-full h-auto block" loading="lazy">
       </div>
-      <div class="rounded-2xl overflow-hidden border border-brand-border bg-black shadow-lg img-zoom">
+      <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
         <img src="images/step-05-profile.png" alt="ขั้นตอนที่ 5 เลือกโปรไฟล์" class="w-full h-auto block" loading="lazy">
       </div>
     </section>
@@ -309,55 +325,55 @@
     <section id="netflixTabOtp" class="hidden space-y-6">
       
       <!-- Direct Link to OTP Website -->
-      <a href="https://areslanestore.shop" target="_blank" rel="noopener noreferrer" class="block group p-4 rounded-2xl bg-gradient-to-r from-red-950/60 to-brand-card border border-netflix-red/40 hover:border-netflix-red transition shadow-lg">
+      <a href="https://areslanestore.shop" target="_blank" rel="noopener noreferrer" class="block group p-4 rounded-2xl bg-white border border-red-200 hover:border-red-500 transition shadow-sm hover:shadow-md">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-netflix-red flex items-center justify-center text-white font-black shadow-md">
+            <div class="w-10 h-10 rounded-xl bg-red-600 flex items-center justify-center text-white font-black shadow-sm">
               <i data-lucide="external-link" class="w-5 h-5"></i>
             </div>
             <div>
-              <div class="text-sm font-bold text-white group-hover:text-red-400 transition flex items-center gap-1.5">
+              <div class="text-sm font-bold text-gray-900 group-hover:text-red-600 transition flex items-center gap-1.5">
                 <span>คลิกเปิดเว็บรับรหัส: areslanestore.shop</span>
-                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                <i data-lucide="arrow-up-right" class="w-4 h-4 text-red-500"></i>
               </div>
-              <p class="text-xs text-gray-400">กรอกอีเมลเพื่อขอรหัส OTP หรือปลดล็อคครัวเรือน</p>
+              <p class="text-xs text-gray-500">กรอกอีเมลเพื่อขอรหัส OTP หรือปลดล็อคครัวเรือน</p>
             </div>
           </div>
-          <span class="hidden sm:inline-flex px-3 py-1.5 rounded-lg bg-netflix-red text-white text-xs font-bold group-hover:bg-netflix-redHover transition">
-            เปิดเว็บทันที
+          <span class="hidden sm:inline-flex px-3 py-1.5 rounded-lg bg-red-50 text-red-600 text-xs font-bold group-hover:bg-red-600 group-hover:text-white transition">
+            เปิดเว็บ
           </span>
         </div>
       </a>
 
       <!-- Case 1: OTP Code -->
-      <div class="rounded-2xl overflow-hidden border border-brand-border bg-black shadow-lg img-zoom">
+      <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
         <img src="images/guide-web-01-otp.png" alt="กรณีที่ 1 ขอรหัสยืนยัน OTP" class="w-full h-auto block" loading="lazy">
       </div>
-      <div class="rounded-2xl overflow-hidden border border-brand-border bg-black shadow-lg img-zoom">
+      <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
         <img src="images/guide-device-01-netflix.png" alt="หน้าจอ Netflix สำหรับกดส่งรหัส" class="w-full h-auto block" loading="lazy">
       </div>
 
       <!-- Case 2: Mobile/PC Temporary Travel -->
-      <div class="rounded-2xl overflow-hidden border border-brand-border bg-black shadow-lg img-zoom">
+      <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
         <img src="images/guide-web-02-household.png" alt="กรณีที่ 2 อุปกรณ์ติดครัวเรือน มือถือ/คอม" class="w-full h-auto block" loading="lazy">
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div class="rounded-2xl overflow-hidden border border-brand-border bg-black shadow-lg img-zoom">
+        <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
           <img src="images/guide-device-02-mobile.png" alt="หน้าจอมือถือ กดรับชมชั่วคราว" class="w-full h-auto block" loading="lazy">
         </div>
-        <div class="rounded-2xl overflow-hidden border border-brand-border bg-black shadow-lg img-zoom">
+        <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
           <img src="images/guide-device-02-pc.png" alt="หน้าจอคอมพิวเตอร์ กดรับชมชั่วคราว" class="w-full h-auto block" loading="lazy">
         </div>
       </div>
 
       <!-- Case 3: Smart TV Household -->
-      <div class="rounded-2xl overflow-hidden border border-brand-border bg-black shadow-lg img-zoom">
+      <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
         <img src="images/guide-web-03a-travel.png" alt="กรณีที่ 3A ทีวีมีปุ่มฉันกำลังเดินทาง" class="w-full h-auto block" loading="lazy">
       </div>
-      <div class="rounded-2xl overflow-hidden border border-brand-border bg-black shadow-lg img-zoom">
+      <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
         <img src="images/guide-web-03b-update.png" alt="กรณีที่ 3B ทีวีอัปเดตครัวเรือน" class="w-full h-auto block" loading="lazy">
       </div>
-      <div class="rounded-2xl overflow-hidden border border-brand-border bg-black shadow-lg img-zoom">
+      <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
         <img src="images/guide-device-03-tv.png" alt="หน้าจอทีวี กดปุ่มนั่นคือบัญชีของฉัน" class="w-full h-auto block" loading="lazy">
       </div>
 
@@ -368,27 +384,32 @@
   <!-- ========================================== -->
   <!-- VIEW 3: WINDOWS PRO GUIDE VIEW             -->
   <!-- ========================================== -->
-  <main id="windowsView" class="hidden flex-grow max-w-3xl w-full mx-auto px-4 py-6">
+  <main id="windowsView" class="hidden flex-grow max-w-3xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8">
     
     <!-- Top Back Bar -->
     <div class="flex items-center justify-between mb-4">
-      <button onclick="switchView('home')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-semibold text-gray-200 transition">
+      <button onclick="switchView('home')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white hover:bg-gray-50 border border-gray-200 text-xs font-semibold text-gray-700 shadow-sm transition">
         <i data-lucide="arrow-left" class="w-4 h-4"></i>
         <span>กลับหน้าศูนย์รวมคู่มือ</span>
       </button>
-      <span class="text-xs font-bold text-windows-blue flex items-center gap-1">
-        <i data-lucide="monitor" class="w-4 h-4"></i>
+      <span class="text-xs font-bold text-blue-600 flex items-center gap-1">
+        <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none">
+          <rect x="2" y="2" width="9" height="9" rx="1" fill="#0078D4"/>
+          <rect x="13" y="2" width="9" height="9" rx="1" fill="#0078D4"/>
+          <rect x="2" y="13" width="9" height="9" rx="1" fill="#0078D4"/>
+          <rect x="13" y="13" width="9" height="9" rx="1" fill="#0078D4"/>
+        </svg>
         <span>คู่มือ Windows Pro</span>
       </span>
     </div>
 
-    <!-- Windows Guide Segment Switcher -->
-    <div class="grid grid-cols-2 gap-2 p-1.5 bg-brand-card rounded-2xl border border-brand-border mb-6">
-      <button id="winNavTab1" onclick="switchWindowsTab('steps')" class="active-windows-tab py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center justify-center gap-1.5">
-        <i data-lucide="key-round" class="w-4 h-4"></i>
+    <!-- Segment Switcher (Apple Style Segmented Control) -->
+    <div class="grid grid-cols-2 gap-1.5 p-1.5 bg-gray-200/70 rounded-2xl mb-6">
+      <button id="winNavTab1" onclick="switchWindowsTab('steps')" class="active-pill py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center justify-center gap-1.5">
+        <i data-lucide="key-round" class="w-4 h-4 text-blue-600"></i>
         <span>วิธีใส่คีย์ 3 ขั้นตอน</span>
       </button>
-      <button id="winNavTab2" onclick="switchWindowsTab('faq')" class="py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold text-gray-400 hover:text-white transition-all duration-200 flex items-center justify-center gap-1.5">
+      <button id="winNavTab2" onclick="switchWindowsTab('faq')" class="py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold text-gray-600 hover:text-gray-900 transition-all duration-200 flex items-center justify-center gap-1.5">
         <i data-lucide="help-circle" class="w-4 h-4"></i>
         <span>แก้ปัญหา & ฟีเจอร์ Pro</span>
       </button>
@@ -396,10 +417,10 @@
 
     <!-- WINDOWS SUB-TAB 1: ACTIVATION STEPS -->
     <section id="winTabSteps" class="space-y-4">
-      <div class="rounded-2xl overflow-hidden border border-brand-border bg-black shadow-lg img-zoom">
+      <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
         <img src="images/guide-windows-04-steps.png" alt="3 ขั้นตอนการเปิดใช้งาน Windows Pro" class="w-full h-auto block" loading="lazy">
       </div>
-      <div class="rounded-2xl overflow-hidden border border-brand-border bg-black shadow-lg img-zoom">
+      <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
         <img src="images/guide-windows-05-checklist.png" alt="เงื่อนไขและรายละเอียดคีย์ Retail" class="w-full h-auto block" loading="lazy">
       </div>
     </section>
@@ -407,42 +428,42 @@
     <!-- WINDOWS SUB-TAB 2: FAQ & FEATURES -->
     <section id="winTabFaq" class="hidden space-y-4">
       
-      <!-- Troubleshooting Accordion / Guide Box -->
-      <div class="rounded-2xl glass-panel p-5 border border-brand-border">
-        <h3 class="text-base font-bold text-white mb-3 flex items-center gap-2">
-          <i data-lucide="wrench" class="w-5 h-5 text-amber-400"></i>
+      <!-- Minimal Troubleshooting Card -->
+      <div class="rounded-2xl bg-white p-6 border border-gray-200/90 shadow-sm">
+        <h3 class="text-base font-bold text-gray-900 mb-4 flex items-center gap-2">
+          <i data-lucide="wrench" class="w-5 h-5 text-amber-500"></i>
           <span>วิธีแก้ปัญหาที่พบบ่อย (Troubleshooting)</span>
         </h3>
         
-        <div class="space-y-3 text-xs sm:text-sm text-gray-300">
+        <div class="space-y-3.5 text-xs sm:text-sm">
           <!-- Issue 1 -->
-          <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
-            <h4 class="font-bold text-white mb-1 flex items-center gap-1.5">
-              <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+          <div class="p-4 rounded-xl bg-gray-50 border border-gray-200/70">
+            <h4 class="font-bold text-gray-900 mb-1 flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-blue-500"></span>
               เดิมเป็น Windows Home อัปเกรดเป็น Pro ไม่ผ่าน (Error 0x80070490)?
             </h4>
-            <p class="text-gray-400 leading-relaxed">
-              <strong>วิธีแก้:</strong> ให้ทำการ <span class="text-amber-300">ตัดการเชื่อมต่ออินเทอร์เน็ต (ปิด Wi-Fi / ดึงสายแลนออก)</span> จากนั้นใส่คีย์เดิมอีกครั้งแล้วกด Activate ระบบจะทำการดาวน์โหลดฟีเจอร์ Pro สำเร็จ เมื่อเครื่องรีสตาร์ทเสร็จค่อยเปิดเน็ตตามปกติครับ
+            <p class="text-gray-600 leading-relaxed mt-1">
+              <strong>วิธีแก้:</strong> ให้ทำการ <span class="font-semibold text-gray-900 underline decoration-amber-400 decoration-2">ตัดการเชื่อมต่ออินเทอร์เน็ต (ปิด Wi-Fi หรือถอดสายแลน)</span> จากนั้นใส่คีย์ที่ได้รับอีกครั้ง แล้วกด Activate ระบบจะรันอัปเกรดเป็น Pro สำเร็จ เมื่อเครื่องรีสตาร์ทเสร็จจึงค่อยเปิดเน็ตตามปกติครับ
             </p>
           </div>
 
           <!-- Issue 2 -->
-          <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
-            <h4 class="font-bold text-white mb-1 flex items-center gap-1.5">
-              <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+          <div class="p-4 rounded-xl bg-gray-50 border border-gray-200/70">
+            <h4 class="font-bold text-gray-900 mb-1 flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-blue-500"></span>
               เครื่องเคยลง Crack หรือโปรแกรม KMS เถื่อนมาก่อน?
             </h4>
-            <p class="text-gray-400 leading-relaxed">
-              <strong>วิธีแก้:</strong> เปิดโปรแกรม <span class="text-cyan-300">Command Prompt (cmd)</span> แบบ Run as administrator แล้วพิมพ์คำสั่ง <code class="px-1.5 py-0.5 rounded bg-black/60 text-emerald-400 font-mono">slmgr /upk</code> กด Enter เพื่อล้างคีย์เก่าออก แล้วค่อยนำคีย์แท้ของทางร้านไปกรอกในหน้า Settings ตามปกติครับ
+            <p class="text-gray-600 leading-relaxed mt-1">
+              <strong>วิธีแก้:</strong> เปิดโปรแกรม <span class="font-semibold text-gray-900">Command Prompt (cmd)</span> โดยคลิกขวาเลือก Run as administrator แล้วพิมพ์คำสั่ง <code class="px-2 py-0.5 rounded bg-gray-200 text-gray-800 font-mono text-xs font-semibold">slmgr /upk</code> กด Enter เพื่อถอนการติดตั้งคีย์เก่าออก จากนั้นจึงนำคีย์แท้ไปกรอกในหน้า Settings ตามปกติครับ
             </p>
           </div>
         </div>
       </div>
 
-      <div class="rounded-2xl overflow-hidden border border-brand-border bg-black shadow-lg img-zoom">
+      <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
         <img src="images/guide-windows-02-compare.png" alt="เปรียบเทียบ Retail แท้ vs คีย์ถูกทั่วไป" class="w-full h-auto block" loading="lazy">
       </div>
-      <div class="rounded-2xl overflow-hidden border border-brand-border bg-black shadow-lg img-zoom">
+      <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
         <img src="images/guide-windows-03-features.png" alt="ฟีเจอร์เด็ดของ Windows Pro" class="w-full h-auto block" loading="lazy">
       </div>
     </section>
@@ -450,15 +471,15 @@
   </main>
 
   <!-- ========================================== -->
-  <!-- FOOTER                                     -->
+  <!-- MINIMAL FOOTER                             -->
   <!-- ========================================== -->
-  <footer class="glass-panel border-t border-brand-border mt-auto py-6">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <p class="text-xs text-gray-500 mb-1">
-        © ONESTOP AI — ศูนย์รวมคู่มือและบริการหลังการขาย ลิขสิทธิ์และสิทธิ์การใช้งานถูกต้อง
+  <footer class="bg-white border-t border-gray-200 mt-auto py-6">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
+      <p class="text-xs text-gray-500">
+        © ONESTOP AI — ศูนย์รวมคู่มือและบริการหลังการขาย
       </p>
-      <p class="text-[11px] text-gray-600">
-        ออกแบบเพื่อความสะดวกและรวดเร็วของลูกค้า ใช้งานง่ายบนมือถือทุกระบบ
+      <p class="text-[11px] text-gray-400 mt-0.5">
+        ออกแบบเพื่อความสะดวกและรวดเร็วของลูกค้า ใช้งานง่าย ปรับขนาดอัตโนมัติตามทุกอุปกรณ์
       </p>
     </div>
   </footer>
@@ -477,7 +498,6 @@
       const windowsView = document.getElementById('windowsView');
       const backBtn = document.getElementById('headerBackBtn');
 
-      // Hide all
       homeView.classList.add('hidden');
       netflixView.classList.add('hidden');
       windowsView.classList.add('hidden');
@@ -508,17 +528,17 @@
       const secOtp = document.getElementById('netflixTabOtp');
 
       if (tabName === 'otp') {
-        tab1.classList.remove('active-netflix-tab');
-        tab1.classList.add('text-gray-400');
-        tab2.classList.add('active-netflix-tab');
-        tab2.classList.remove('text-gray-400');
+        tab1.classList.remove('active-pill');
+        tab1.classList.add('text-gray-600');
+        tab2.classList.add('active-pill');
+        tab2.classList.remove('text-gray-600');
         secLogin.classList.add('hidden');
         secOtp.classList.remove('hidden');
       } else {
-        tab2.classList.remove('active-netflix-tab');
-        tab2.classList.add('text-gray-400');
-        tab1.classList.add('active-netflix-tab');
-        tab1.classList.remove('text-gray-400');
+        tab2.classList.remove('active-pill');
+        tab2.classList.add('text-gray-600');
+        tab1.classList.add('active-pill');
+        tab1.classList.remove('text-gray-600');
         secOtp.classList.add('hidden');
         secLogin.classList.remove('hidden');
       }
@@ -532,17 +552,17 @@
       const secFaq = document.getElementById('winTabFaq');
 
       if (tabName === 'faq') {
-        tab1.classList.remove('active-windows-tab');
-        tab1.classList.add('text-gray-400');
-        tab2.classList.add('active-windows-tab');
-        tab2.classList.remove('text-gray-400');
+        tab1.classList.remove('active-pill');
+        tab1.classList.add('text-gray-600');
+        tab2.classList.add('active-pill');
+        tab2.classList.remove('text-gray-600');
         secSteps.classList.add('hidden');
         secFaq.classList.remove('hidden');
       } else {
-        tab2.classList.remove('active-windows-tab');
-        tab2.classList.add('text-gray-400');
-        tab1.classList.add('active-windows-tab');
-        tab1.classList.remove('text-gray-400');
+        tab2.classList.remove('active-pill');
+        tab2.classList.add('text-gray-600');
+        tab1.classList.add('active-pill');
+        tab1.classList.remove('text-gray-600');
         secFaq.classList.add('hidden');
         secSteps.classList.remove('hidden');
       }
@@ -556,15 +576,15 @@
       items.forEach(item => {
         const text = item.textContent.toLowerCase();
         if (text.includes(input)) {
-          item.style.display = 'block';
+          item.style.display = 'flex';
         } else {
           item.style.display = 'none';
         }
       });
     }
 
-    // HASH ROUTER ON LOAD
-    window.addEventListener('DOMContentLoaded', () => {
+    // HASH ROUTER
+    function checkHashRoute() {
       const hash = window.location.hash.toLowerCase();
       if (hash === '#netflix') {
         switchView('netflix');
@@ -573,19 +593,10 @@
       } else {
         switchView('home');
       }
-    });
+    }
 
-    // POPSTATE BACK BUTTON
-    window.addEventListener('hashchange', () => {
-      const hash = window.location.hash.toLowerCase();
-      if (hash === '#netflix') {
-        switchView('netflix');
-      } else if (hash === '#windows') {
-        switchView('windows');
-      } else {
-        switchView('home');
-      }
-    });
+    window.addEventListener('DOMContentLoaded', checkHashRoute);
+    window.addEventListener('hashchange', checkHashRoute);
   </script>
 </body>
 </html>
