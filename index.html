@@ -326,20 +326,40 @@
       </span>
     </div>
 
-    <!-- Quick Web Link Box -->
-    <div class="p-4 rounded-2xl bg-blue-50/70 border border-blue-200/80 mb-6 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold">
-          <i data-lucide="mail" class="w-5 h-5"></i>
+    <!-- Quick Web Link Box (เช็คได้ 2 เว็บ) -->
+    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 mb-6 space-y-3">
+      <div class="text-xs font-bold text-gray-500 uppercase tracking-wider flex items-center gap-1.5">
+        <i data-lucide="mail" class="w-4 h-4 text-blue-600"></i>
+        <span>เว็บกล่องจดหมายสำหรับรับลิงก์ยืนยัน (เช็คได้ 2 เว็บไซต์ตามอีเมลที่ได้รับ):</span>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <!-- เว็บ 1: Outlook -->
+        <div class="p-3 rounded-xl bg-white border border-blue-200/80 shadow-2xs flex items-center justify-between">
+          <div class="min-w-0 pr-2">
+            <div class="text-xs font-bold text-blue-900 flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+              <span>1. เว็บ Outlook (Hotmail)</span>
+            </div>
+            <div class="text-[11px] text-gray-500 font-mono truncate">outlook.cloud.microsoft/mail/</div>
+          </div>
+          <a href="https://outlook.cloud.microsoft/mail/" target="_blank" rel="noopener noreferrer" class="shrink-0 px-2.5 py-1 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-bold transition shadow-xs">
+            เปิด Outlook
+          </a>
         </div>
-        <div>
-          <div class="text-sm font-bold text-gray-900">เว็บกล่องจดหมายสำหรับรับลิงก์ยืนยัน:</div>
-          <div class="text-xs text-blue-700 font-mono font-semibold">https://outlook.cloud.microsoft/mail/</div>
+        <!-- เว็บ 2: Notletters -->
+        <div class="p-3 rounded-xl bg-white border border-orange-200/80 shadow-2xs flex items-center justify-between">
+          <div class="min-w-0 pr-2">
+            <div class="text-xs font-bold text-orange-900 flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-orange-600"></span>
+              <span>หรือ 2. เว็บ Notletters</span>
+            </div>
+            <div class="text-[11px] text-gray-500 font-mono truncate">notletters.com</div>
+          </div>
+          <a href="https://notletters.com" target="_blank" rel="noopener noreferrer" class="shrink-0 px-2.5 py-1 rounded-lg bg-orange-600 hover:bg-orange-700 text-white text-[11px] font-bold transition shadow-xs">
+            เปิด Notletters
+          </a>
         </div>
       </div>
-      <a href="https://outlook.cloud.microsoft/mail/" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition shadow-xs">
-        เปิดเว็บเมล
-      </a>
     </div>
 
     <!-- STEPS CARDS -->
@@ -375,9 +395,15 @@
         <img src="images/ขั้นตอนที่_06_กรอกรหัสElevenอีกครั้งพร้อมใช้งาน.png" alt="ขั้นตอนที่ 6 กรอกรหัส ElevenLabs อีกครั้ง พร้อมใช้งาน" class="w-full h-auto block" loading="lazy">
       </div>
 
-      <!-- STEP 3B (EXTRA) -->
-      <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
-        <img src="images/ขั้นตอนที่_03B_กรณีได้เมล_Notletters.png" alt="ขั้นตอนที่ 3B กรณีได้เมล Notletters" class="w-full h-auto block" loading="lazy">
+      <!-- STEP 3B (OR NOTLETTERS) -->
+      <div class="space-y-2 pt-4 border-t border-dashed border-gray-200">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-orange-50 text-orange-800 border border-orange-200 text-xs font-bold shadow-2xs">
+          <i data-lucide="split" class="w-4 h-4 text-orange-600"></i>
+          <span>หรือ ขั้นตอนที่ 3B : กรณีได้อีเมล Notletters (เช็คกล่องจดหมายได้ 2 เว็บไซต์)</span>
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
+          <img src="images/ขั้นตอนที่_03B_กรณีได้เมล_Notletters.png" alt="หรือ ขั้นตอนที่ 3B กรณีได้เมล Notletters" class="w-full h-auto block" loading="lazy">
+        </div>
       </div>
 
     </div>
