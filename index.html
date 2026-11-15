@@ -88,7 +88,7 @@
       <div class="flex items-center gap-2">
         <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200/60">
           <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-          บริการช่วยเหลือ 24 ชม.
+          บริการดูแล 24 ชม.
         </span>
       </div>
 
@@ -116,7 +116,7 @@
           type="text" 
           id="productSearch" 
           onkeyup="filterProducts()" 
-          placeholder="ค้นหาชื่อสินค้า (เช่น Netflix, Windows, ChatGPT, Gemini)..." 
+          placeholder="ค้นหาชื่อสินค้า (เช่น ElevenLabs, Netflix, Windows, ChatGPT)..." 
           class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition text-sm shadow-sm"
         >
       </div>
@@ -125,9 +125,37 @@
     <!-- Product Grid: 1 col (mobile), 2 cols (tablet), 3 cols (desktop) -->
     <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
       
-      <!-- CARD 1: NETFLIX -->
+      <!-- CARD 1: ELEVENLABS AI -->
+      <div class="product-item card-hover group cursor-pointer bg-white rounded-3xl border border-gray-200/90 shadow-sm flex flex-col overflow-hidden" onclick="switchView('elevenlabs')">
+        <!-- Full Brand Icon Canvas -->
+        <div class="w-full h-48 sm:h-56 flex items-center justify-center p-6 bg-gradient-to-b from-slate-100/70 via-white to-white border-b border-gray-100 relative overflow-hidden">
+          <span class="absolute top-3.5 right-3.5 inline-flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/70 shadow-2xs">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            พร้อมใช้งาน
+          </span>
+          <img src="images/icons/elevenlabs.png" alt="ElevenLabs" class="h-24 sm:h-28 w-auto object-contain transition-transform duration-300 group-hover:scale-110 drop-shadow-md">
+        </div>
+        
+        <div class="p-5 sm:p-6 flex-grow flex flex-col justify-between">
+          <div>
+            <h3 class="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-blue-600 transition mb-1.5 flex items-center justify-between">
+              <span>ElevenLabs AI</span>
+              <i data-lucide="chevron-right" class="w-5 h-5 text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 transition"></i>
+            </h3>
+            <p class="text-xs sm:text-sm text-gray-500 mb-3 line-clamp-2">
+              วิธีเข้าสู่ระบบ & วิธียืนยันตัวตนผ่านกล่องข้อความอีเมล Outlook ทีละขั้นตอน
+            </p>
+          </div>
+
+          <div class="pt-3 border-t border-gray-100 flex items-center justify-between">
+            <span class="text-xs font-semibold text-blue-600 group-hover:underline">เปิดดูคู่มือการใช้งาน</span>
+            <span class="text-[11px] text-gray-400">เข้าสู่ระบบ / ยืนยันเมล</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 2: NETFLIX -->
       <div class="product-item card-hover group cursor-pointer bg-white rounded-3xl border border-gray-200/90 shadow-sm flex flex-col overflow-hidden" onclick="switchView('netflix')">
-        <!-- Full Brand Icon Canvas (ไอคอนจริงเต็มๆ การ์ด) -->
         <div class="w-full h-48 sm:h-56 flex items-center justify-center p-6 bg-gradient-to-b from-red-50/50 via-white to-white border-b border-gray-100 relative overflow-hidden">
           <span class="absolute top-3.5 right-3.5 inline-flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/70 shadow-2xs">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -154,9 +182,8 @@
         </div>
       </div>
 
-      <!-- CARD 2: WINDOWS PRO -->
+      <!-- CARD 3: WINDOWS PRO -->
       <div class="product-item card-hover group cursor-pointer bg-white rounded-3xl border border-gray-200/90 shadow-sm flex flex-col overflow-hidden" onclick="switchView('windows')">
-        <!-- Full Brand Icon Canvas (ไอคอนจริงเต็มๆ การ์ด) -->
         <div class="w-full h-48 sm:h-56 flex items-center justify-center p-6 bg-gradient-to-b from-blue-50/50 via-white to-white border-b border-gray-100 relative overflow-hidden">
           <span class="absolute top-3.5 right-3.5 inline-flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/70 shadow-2xs">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -183,9 +210,8 @@
         </div>
       </div>
 
-      <!-- CARD 3: CHATGPT PLUS -->
+      <!-- CARD 4: CHATGPT PLUS -->
       <div class="product-item card-hover group cursor-pointer bg-white rounded-3xl border border-gray-200/90 shadow-sm flex flex-col overflow-hidden" onclick="showUpcomingModal('ChatGPT Plus')">
-        <!-- Full Brand Icon Canvas (ไอคอนจริงเต็มๆ การ์ด) -->
         <div class="w-full h-48 sm:h-56 flex items-center justify-center p-6 bg-gradient-to-b from-emerald-50/50 via-white to-white border-b border-gray-100 relative overflow-hidden">
           <span class="absolute top-3.5 right-3.5 inline-flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 border border-gray-200 shadow-2xs">
             คู่มือเร็วๆ นี้
@@ -211,9 +237,8 @@
         </div>
       </div>
 
-      <!-- CARD 4: GOOGLE GEMINI PRO -->
+      <!-- CARD 5: GOOGLE GEMINI PRO -->
       <div class="product-item card-hover group cursor-pointer bg-white rounded-3xl border border-gray-200/90 shadow-sm flex flex-col overflow-hidden" onclick="showUpcomingModal('Google Gemini Pro')">
-        <!-- Full Brand Icon Canvas (ไอคอนจริงเต็มๆ การ์ด) -->
         <div class="w-full h-48 sm:h-56 flex items-center justify-center p-6 bg-gradient-to-b from-indigo-50/50 via-white to-white border-b border-gray-100 relative overflow-hidden">
           <span class="absolute top-3.5 right-3.5 inline-flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 border border-gray-200 shadow-2xs">
             คู่มือเร็วๆ นี้
@@ -239,37 +264,8 @@
         </div>
       </div>
 
-      <!-- CARD 5: MICROSOFT 365 / OFFICE -->
-      <div class="product-item card-hover group cursor-pointer bg-white rounded-3xl border border-gray-200/90 shadow-sm flex flex-col overflow-hidden" onclick="showUpcomingModal('Microsoft Office / 365')">
-        <!-- Full Brand Icon Canvas (ไอคอนจริงเต็มๆ การ์ด) -->
-        <div class="w-full h-48 sm:h-56 flex items-center justify-center p-6 bg-gradient-to-b from-amber-50/50 via-white to-white border-b border-gray-100 relative overflow-hidden">
-          <span class="absolute top-3.5 right-3.5 inline-flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 border border-gray-200 shadow-2xs">
-            คู่มือเร็วๆ นี้
-          </span>
-          <img src="images/icons/microsoft365.png" alt="Microsoft Office" class="h-28 sm:h-32 w-auto object-contain transition-transform duration-300 group-hover:scale-110 drop-shadow-md">
-        </div>
-        
-        <div class="p-5 sm:p-6 flex-grow flex flex-col justify-between">
-          <div>
-            <h3 class="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-amber-600 transition mb-1.5 flex items-center justify-between">
-              <span>Microsoft 365 / Office</span>
-              <i data-lucide="chevron-right" class="w-5 h-5 text-gray-400 group-hover:text-amber-600 group-hover:translate-x-1 transition"></i>
-            </h3>
-            <p class="text-xs sm:text-sm text-gray-500 mb-3 line-clamp-2">
-              ลิงก์ดาวน์โหลดตัวติดตั้งแท้จาก Microsoft & ขั้นตอนใส่รหัสคีย์เปิดใช้งาน
-            </p>
-          </div>
-
-          <div class="pt-3 border-t border-gray-100 flex items-center justify-between">
-            <span class="text-xs font-semibold text-amber-600 group-hover:underline">ดูข้อมูลเบื้องต้น</span>
-            <span class="text-[11px] text-gray-400">Office 2021 / 365</span>
-          </div>
-        </div>
-      </div>
-
       <!-- CARD 6: CAPCUT PRO -->
       <div class="product-item card-hover group cursor-pointer bg-white rounded-3xl border border-gray-200/90 shadow-sm flex flex-col overflow-hidden" onclick="showUpcomingModal('CapCut Pro')">
-        <!-- Full Brand Icon Canvas (ไอคอนจริงเต็มๆ การ์ด) -->
         <div class="w-full h-48 sm:h-56 flex items-center justify-center p-6 bg-gradient-to-b from-slate-100/60 via-white to-white border-b border-gray-100 relative overflow-hidden">
           <span class="absolute top-3.5 right-3.5 inline-flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 border border-gray-200 shadow-2xs">
             คู่มือเร็วๆ นี้
@@ -303,7 +299,7 @@
         ติดปัญหาการใช้งาน หรือมีคำถามเพิ่มเติม?
       </h4>
       <p class="text-xs sm:text-sm text-gray-500 max-w-md mx-auto mb-4">
-        ทีมงาน ONESTOP AI ยินดีช่วยเหลือและดูแลลูกค้าทุกท่านตลอดเวลาครับ
+        ทางร้าน ONESTOP AI ยินดีช่วยเหลือและดูแลลูกค้าทุกท่านตลอดเวลาครับ
       </p>
       <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-50 hover:bg-gray-100 text-gray-700 text-xs font-semibold border border-gray-200 transition">
         <i data-lucide="message-circle" class="w-4 h-4 text-blue-600"></i>
@@ -314,7 +310,82 @@
   </main>
 
   <!-- ========================================== -->
-  <!-- VIEW 2: NETFLIX GUIDE VIEW                 -->
+  <!-- VIEW 2: ELEVENLABS GUIDE VIEW              -->
+  <!-- ========================================== -->
+  <main id="elevenlabsView" class="hidden flex-grow max-w-3xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8">
+    
+    <!-- Top Back Bar -->
+    <div class="flex items-center justify-between mb-6">
+      <button onclick="switchView('home')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white hover:bg-gray-50 border border-gray-200 text-xs font-semibold text-gray-700 shadow-sm transition">
+        <i data-lucide="arrow-left" class="w-4 h-4"></i>
+        <span>กลับหน้าศูนย์รวมคู่มือ</span>
+      </button>
+      <span class="text-xs font-bold text-gray-900 flex items-center gap-1.5">
+        <img src="images/icons/elevenlabs.png" alt="ElevenLabs" class="w-4 h-4 object-contain">
+        <span>คู่มือ ElevenLabs AI</span>
+      </span>
+    </div>
+
+    <!-- Quick Web Link Box -->
+    <div class="p-4 rounded-2xl bg-blue-50/70 border border-blue-200/80 mb-6 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold">
+          <i data-lucide="mail" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <div class="text-sm font-bold text-gray-900">เว็บกล่องจดหมายสำหรับรับลิงก์ยืนยัน:</div>
+          <div class="text-xs text-blue-700 font-mono font-semibold">https://outlook.cloud.microsoft/mail/</div>
+        </div>
+      </div>
+      <a href="https://outlook.cloud.microsoft/mail/" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition shadow-xs">
+        เปิดเว็บเมล
+      </a>
+    </div>
+
+    <!-- STEPS CARDS -->
+    <div class="space-y-6">
+      
+      <!-- STEP 1 -->
+      <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
+        <img src="images/ขั้นตอนที่_01_เข้าเว็บElevenLabsและกรอกรหัส.png" alt="ขั้นตอนที่ 1 เข้าเว็บ ElevenLabs และกรอกรหัส" class="w-full h-auto block" loading="lazy">
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
+        <img src="images/ขั้นตอนที่_02_แจ้งเตือนส่งลิงก์ไปที่เมล.png" alt="ขั้นตอนที่ 2 แจ้งเตือนส่งลิงก์ไปที่เมล" class="w-full h-auto block" loading="lazy">
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
+        <img src="images/ขั้นตอนที่_03_เข้าเว็บเมลOutlookและกรอกเมล.png" alt="ขั้นตอนที่ 3 เข้าเว็บเมล Outlook และกรอกเมล" class="w-full h-auto block" loading="lazy">
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
+        <img src="images/ขั้นตอนที่_04_กรอกรหัสผ่านเมล_คนละรหัสกับEleven.png" alt="ขั้นตอนที่ 4 กรอกรหัสผ่านเมล คนละรหัสกับ ElevenLabs" class="w-full h-auto block" loading="lazy">
+      </div>
+
+      <!-- STEP 5 -->
+      <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
+        <img src="images/ขั้นตอนที่_05_กดปุ่มVerify_Emailในกล่องจดหมาย.png" alt="ขั้นตอนที่ 5 กดปุ่ม Verify email ในกล่องจดหมาย" class="w-full h-auto block" loading="lazy">
+      </div>
+
+      <!-- STEP 6 -->
+      <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
+        <img src="images/ขั้นตอนที่_06_กรอกรหัสElevenอีกครั้งพร้อมใช้งาน.png" alt="ขั้นตอนที่ 6 กรอกรหัส ElevenLabs อีกครั้ง พร้อมใช้งาน" class="w-full h-auto block" loading="lazy">
+      </div>
+
+      <!-- STEP 3B (EXTRA) -->
+      <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
+        <img src="images/ขั้นตอนที่_03B_กรณีได้เมล_Notletters.png" alt="ขั้นตอนที่ 3B กรณีได้เมล Notletters" class="w-full h-auto block" loading="lazy">
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- VIEW 3: NETFLIX GUIDE VIEW                 -->
   <!-- ========================================== -->
   <main id="netflixView" class="hidden flex-grow max-w-3xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8">
     
@@ -330,7 +401,7 @@
       </span>
     </div>
 
-    <!-- Segment Switcher (Apple Style Segmented Control) -->
+    <!-- Segment Switcher -->
     <div class="grid grid-cols-2 gap-1.5 p-1.5 bg-gray-200/70 rounded-2xl mb-6">
       <button id="netflixNavTab1" onclick="switchNetflixTab('login')" class="active-pill py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center justify-center gap-1.5">
         <i data-lucide="log-in" class="w-4 h-4 text-red-600"></i>
@@ -363,8 +434,6 @@
 
     <!-- SUB-TAB 2: OTP & HOUSEHOLD WEB -->
     <section id="netflixTabOtp" class="hidden space-y-6">
-      
-      <!-- Direct Link to OTP Website -->
       <a href="https://areslanestore.shop" target="_blank" rel="noopener noreferrer" class="block group p-4 rounded-2xl bg-white border border-red-200 hover:border-red-500 transition shadow-sm hover:shadow-md">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-3">
@@ -385,15 +454,12 @@
         </div>
       </a>
 
-      <!-- Case 1: OTP Code -->
       <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
         <img src="images/guide-web-01-otp.png" alt="กรณีที่ 1 ขอรหัสยืนยัน OTP" class="w-full h-auto block" loading="lazy">
       </div>
       <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
         <img src="images/guide-device-01-netflix.png" alt="หน้าจอ Netflix สำหรับกดส่งรหัส" class="w-full h-auto block" loading="lazy">
       </div>
-
-      <!-- Case 2: Mobile/PC Temporary Travel -->
       <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
         <img src="images/guide-web-02-household.png" alt="กรณีที่ 2 อุปกรณ์ติดครัวเรือน มือถือ/คอม" class="w-full h-auto block" loading="lazy">
       </div>
@@ -405,8 +471,6 @@
           <img src="images/guide-device-02-pc.png" alt="หน้าจอคอมพิวเตอร์ กดรับชมชั่วคราว" class="w-full h-auto block" loading="lazy">
         </div>
       </div>
-
-      <!-- Case 3: Smart TV Household -->
       <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
         <img src="images/guide-web-03a-travel.png" alt="กรณีที่ 3A ทีวีมีปุ่มฉันกำลังเดินทาง" class="w-full h-auto block" loading="lazy">
       </div>
@@ -416,13 +480,12 @@
       <div class="rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
         <img src="images/guide-device-03-tv.png" alt="หน้าจอทีวี กดปุ่มนั่นคือบัญชีของฉัน" class="w-full h-auto block" loading="lazy">
       </div>
-
     </section>
 
   </main>
 
   <!-- ========================================== -->
-  <!-- VIEW 3: WINDOWS PRO GUIDE VIEW             -->
+  <!-- VIEW 4: WINDOWS PRO GUIDE VIEW             -->
   <!-- ========================================== -->
   <main id="windowsView" class="hidden flex-grow max-w-3xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8">
     
@@ -438,7 +501,7 @@
       </span>
     </div>
 
-    <!-- Segment Switcher (Apple Style Segmented Control) -->
+    <!-- Segment Switcher -->
     <div class="grid grid-cols-2 gap-1.5 p-1.5 bg-gray-200/70 rounded-2xl mb-6">
       <button id="winNavTab1" onclick="switchWindowsTab('steps')" class="active-pill py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center justify-center gap-1.5">
         <i data-lucide="key-round" class="w-4 h-4 text-blue-600"></i>
@@ -462,8 +525,6 @@
 
     <!-- WINDOWS SUB-TAB 2: FAQ & FEATURES -->
     <section id="winTabFaq" class="hidden space-y-4">
-      
-      <!-- Minimal Troubleshooting Card -->
       <div class="rounded-2xl bg-white p-6 border border-gray-200/90 shadow-sm">
         <h3 class="text-base font-bold text-gray-900 mb-4 flex items-center gap-2">
           <i data-lucide="wrench" class="w-5 h-5 text-amber-500"></i>
@@ -471,7 +532,6 @@
         </h3>
         
         <div class="space-y-3.5 text-xs sm:text-sm">
-          <!-- Issue 1 -->
           <div class="p-4 rounded-xl bg-gray-50 border border-gray-200/70">
             <h4 class="font-bold text-gray-900 mb-1 flex items-center gap-2">
               <span class="w-2 h-2 rounded-full bg-blue-500"></span>
@@ -482,7 +542,6 @@
             </p>
           </div>
 
-          <!-- Issue 2 -->
           <div class="p-4 rounded-xl bg-gray-50 border border-gray-200/70">
             <h4 class="font-bold text-gray-900 mb-1 flex items-center gap-2">
               <span class="w-2 h-2 rounded-full bg-blue-500"></span>
@@ -515,7 +574,7 @@
       </div>
       <h3 id="modalProductName" class="text-lg font-bold text-gray-900 mb-2">คู่มือกำลังจัดทำ</h3>
       <p class="text-xs sm:text-sm text-gray-500 mb-6 leading-relaxed">
-        คู่มือฉบับเต็มของสินค้านี้กำลังอยู่ในระหว่างการจัดทำภาพประกอบ หากคุณมีคำถามหรือติดปัญหาการใช้งาน สามารถทักแชทร้านค้าเพื่อสอบถามแอดมินได้ตลอดเวลาครับ
+        คู่มือฉบับเต็มของสินค้านี้กำลังอยู่ในระหว่างการจัดทำภาพประกอบ หากคุณมีคำถามหรือติดปัญหาการใช้งาน สามารถทักแชทร้านค้าเพื่อสอบถามได้ตลอดเวลาครับ
       </p>
       <button onclick="closeUpcomingModal()" class="w-full py-2.5 rounded-xl bg-gray-900 hover:bg-gray-800 text-white text-xs sm:text-sm font-semibold transition shadow-sm">
         เข้าใจแล้ว
@@ -544,19 +603,26 @@
     // Initialize Lucide icons
     lucide.createIcons();
 
-    // VIEW SWITCHER: 'home' | 'netflix' | 'windows'
+    // VIEW SWITCHER: 'home' | 'netflix' | 'windows' | 'elevenlabs'
     function switchView(viewName) {
       const homeView = document.getElementById('homeView');
       const netflixView = document.getElementById('netflixView');
       const windowsView = document.getElementById('windowsView');
+      const elevenlabsView = document.getElementById('elevenlabsView');
       const backBtn = document.getElementById('headerBackBtn');
 
       homeView.classList.add('hidden');
       netflixView.classList.add('hidden');
       windowsView.classList.add('hidden');
+      elevenlabsView.classList.add('hidden');
       backBtn.classList.add('hidden');
 
-      if (viewName === 'netflix') {
+      if (viewName === 'elevenlabs') {
+        elevenlabsView.classList.remove('hidden');
+        backBtn.classList.remove('hidden');
+        window.location.hash = 'elevenlabs';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (viewName === 'netflix') {
         netflixView.classList.remove('hidden');
         backBtn.classList.remove('hidden');
         window.location.hash = 'netflix';
@@ -649,7 +715,9 @@
     // HASH ROUTER
     function checkHashRoute() {
       const hash = window.location.hash.toLowerCase();
-      if (hash === '#netflix') {
+      if (hash === '#elevenlabs') {
+        switchView('elevenlabs');
+      } else if (hash === '#netflix') {
         switchView('netflix');
       } else if (hash === '#windows') {
         switchView('windows');
