@@ -46,11 +46,11 @@
       font-weight: 600;
     }
     .card-hover {
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .card-hover:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.08);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
       border-color: #CBD5E1;
     }
   </style>
@@ -61,11 +61,11 @@
   <!-- MINIMAL HEADER                             -->
   <!-- ========================================== -->
   <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200/80">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
       
       <!-- Brand & Back Button -->
       <div class="flex items-center gap-3">
-        <button id="headerBackBtn" onclick="switchView('home')" class="hidden items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 text-xs font-semibold text-gray-700 transition">
+        <button id="headerBackBtn" onclick="switchView('home')" class="hidden items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gray-100 hover:bg-gray-200 text-xs font-semibold text-gray-700 transition">
           <i data-lucide="arrow-left" class="w-4 h-4"></i>
           <span>หน้าหลัก</span>
         </button>
@@ -96,9 +96,9 @@
   </header>
 
   <!-- ========================================== -->
-  <!-- VIEW 1: HOME PORTAL (MINIMAL PRODUCT CARDS)-->
+  <!-- VIEW 1: HOME PORTAL (FULL-ICON PRODUCT CARDS)-->
   <!-- ========================================== -->
-  <main id="homeView" class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 py-8 sm:py-12">
+  <main id="homeView" class="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 py-8 sm:py-12">
     
     <!-- Hero Title -->
     <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
@@ -116,139 +116,182 @@
           type="text" 
           id="productSearch" 
           onkeyup="filterProducts()" 
-          placeholder="ค้นหาชื่อสินค้า (เช่น Netflix, Windows, Office)..." 
+          placeholder="ค้นหาชื่อสินค้า (เช่น Netflix, Windows, ChatGPT, Gemini)..." 
           class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition text-sm shadow-sm"
         >
       </div>
     </div>
 
-    <!-- Product Grid: 1 col on mobile, 2 cols on tablet/desktop -->
-    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+    <!-- Product Grid: 1 col (mobile), 2 cols (tablet), 3 cols (desktop) -->
+    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
       
       <!-- CARD 1: NETFLIX -->
-      <div class="product-item card-hover group cursor-pointer bg-white rounded-2xl p-5 sm:p-6 border border-gray-200/90 shadow-sm flex flex-col justify-between" onclick="switchView('netflix')">
-        <div>
-          <!-- Top Row: Icon + Badge -->
-          <div class="flex items-center justify-between mb-4">
-            <!-- Official Netflix Icon Box -->
-            <div class="w-12 h-12 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center p-2.5">
-              <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none">
-                <path d="M4 2v20c1.7-.3 3.3-.6 5-1V2H4zm11 0v17.4c1.7-.5 3.3-1.1 5-1.7V2h-5z" fill="#B81D24"/>
-                <path d="M4 2l11 19.4c1.7-.5 3.3-1.1 5-1.7L9 2H4z" fill="#E50914"/>
-              </svg>
-            </div>
-            <span class="inline-flex items-center gap-1 text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-red-50 text-red-600 border border-red-100">
-              พร้อมใช้งาน
-            </span>
+      <div class="product-item card-hover group cursor-pointer bg-white rounded-3xl border border-gray-200/90 shadow-sm flex flex-col overflow-hidden" onclick="switchView('netflix')">
+        <!-- Full Brand Icon Canvas (ไอคอนจริงเต็มๆ การ์ด) -->
+        <div class="w-full h-48 sm:h-56 flex items-center justify-center p-6 bg-gradient-to-b from-red-50/50 via-white to-white border-b border-gray-100 relative overflow-hidden">
+          <span class="absolute top-3.5 right-3.5 inline-flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/70 shadow-2xs">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            พร้อมใช้งาน
+          </span>
+          <img src="images/icons/netflix.png" alt="Netflix" class="h-28 sm:h-32 w-auto object-contain transition-transform duration-300 group-hover:scale-110 drop-shadow-md">
+        </div>
+        
+        <div class="p-5 sm:p-6 flex-grow flex flex-col justify-between">
+          <div>
+            <h3 class="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-red-600 transition mb-1.5 flex items-center justify-between">
+              <span>Netflix</span>
+              <i data-lucide="chevron-right" class="w-5 h-5 text-gray-400 group-hover:text-red-600 group-hover:translate-x-1 transition"></i>
+            </h3>
+            <p class="text-xs sm:text-sm text-gray-500 mb-3 line-clamp-2">
+              วิธีเข้าสู่ระบบ 5 สเต็ป & เว็บรับรหัส OTP ปลดล็อคครัวเรือนทีวี/มือถือ
+            </p>
           </div>
 
-          <h3 class="text-lg font-bold text-gray-900 group-hover:text-red-600 transition mb-1 flex items-center gap-1">
-            <span>Netflix</span>
-            <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 group-hover:translate-x-1 transition"></i>
-          </h3>
-          <p class="text-xs text-gray-500 mb-4 line-clamp-2">
-            วิธีเข้าสู่ระบบ 5 ขั้นตอน & วิธีใช้งานเว็บขอรหัส OTP และแก้ปัญหาครัวเรือน
-          </p>
-        </div>
-
-        <div class="pt-3 border-t border-gray-100 flex flex-wrap gap-1.5 text-[11px] text-gray-600">
-          <span class="px-2 py-0.5 rounded-md bg-gray-50 border border-gray-200/60">เข้าสู่ระบบ 5 สเต็ป</span>
-          <span class="px-2 py-0.5 rounded-md bg-gray-50 border border-gray-200/60">เว็บรับรหัส OTP</span>
-          <span class="px-2 py-0.5 rounded-md bg-gray-50 border border-gray-200/60">แก้ติดครัวเรือน</span>
+          <div class="pt-3 border-t border-gray-100 flex items-center justify-between">
+            <span class="text-xs font-semibold text-red-600 group-hover:underline">เปิดดูคู่มือการใช้งาน</span>
+            <span class="text-[11px] text-gray-400">เข้าสู่ระบบ / OTP</span>
+          </div>
         </div>
       </div>
 
       <!-- CARD 2: WINDOWS PRO -->
-      <div class="product-item card-hover group cursor-pointer bg-white rounded-2xl p-5 sm:p-6 border border-gray-200/90 shadow-sm flex flex-col justify-between" onclick="switchView('windows')">
-        <div>
-          <!-- Top Row: Icon + Badge -->
-          <div class="flex items-center justify-between mb-4">
-            <!-- Official Windows Icon Box -->
-            <div class="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center p-2.5">
-              <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none">
-                <rect x="2" y="2" width="9" height="9" rx="1" fill="#0078D4"/>
-                <rect x="13" y="2" width="9" height="9" rx="1" fill="#0078D4"/>
-                <rect x="2" y="13" width="9" height="9" rx="1" fill="#0078D4"/>
-                <rect x="13" y="13" width="9" height="9" rx="1" fill="#0078D4"/>
-              </svg>
-            </div>
-            <span class="inline-flex items-center gap-1 text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-600 border border-blue-100">
-              พร้อมใช้งาน
-            </span>
+      <div class="product-item card-hover group cursor-pointer bg-white rounded-3xl border border-gray-200/90 shadow-sm flex flex-col overflow-hidden" onclick="switchView('windows')">
+        <!-- Full Brand Icon Canvas (ไอคอนจริงเต็มๆ การ์ด) -->
+        <div class="w-full h-48 sm:h-56 flex items-center justify-center p-6 bg-gradient-to-b from-blue-50/50 via-white to-white border-b border-gray-100 relative overflow-hidden">
+          <span class="absolute top-3.5 right-3.5 inline-flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/70 shadow-2xs">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            พร้อมใช้งาน
+          </span>
+          <img src="images/icons/windows11.png" alt="Windows 11 / 10 Pro" class="h-28 sm:h-32 w-auto object-contain transition-transform duration-300 group-hover:scale-110 drop-shadow-md">
+        </div>
+        
+        <div class="p-5 sm:p-6 flex-grow flex flex-col justify-between">
+          <div>
+            <h3 class="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-blue-600 transition mb-1.5 flex items-center justify-between">
+              <span>Windows 11 / 10 Pro</span>
+              <i data-lucide="chevron-right" class="w-5 h-5 text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 transition"></i>
+            </h3>
+            <p class="text-xs sm:text-sm text-gray-500 mb-3 line-clamp-2">
+              3 สเต็ปใส่คีย์ Retail แท้, วิธีอัปเกรด Home เป็น Pro & แก้ Error 0x80070490
+            </p>
           </div>
 
-          <h3 class="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition mb-1 flex items-center gap-1">
-            <span>Windows 11 / 10 Pro</span>
-            <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 group-hover:translate-x-1 transition"></i>
-          </h3>
-          <p class="text-xs text-gray-500 mb-4 line-clamp-2">
-            3 ขั้นตอนใส่คีย์ Retail แท้, วิธีอัปเกรดจาก Home เป็น Pro & วิธีแก้ปัญหาคีย์ไม่เข้า
-          </p>
-        </div>
-
-        <div class="pt-3 border-t border-gray-100 flex flex-wrap gap-1.5 text-[11px] text-gray-600">
-          <span class="px-2 py-0.5 rounded-md bg-gray-50 border border-gray-200/60">ใส่คีย์ 3 สเต็ป</span>
-          <span class="px-2 py-0.5 rounded-md bg-gray-50 border border-gray-200/60">อัปเกรด Home เป็น Pro</span>
-          <span class="px-2 py-0.5 rounded-md bg-gray-50 border border-gray-200/60">แก้ Error 0x80070490</span>
+          <div class="pt-3 border-t border-gray-100 flex items-center justify-between">
+            <span class="text-xs font-semibold text-blue-600 group-hover:underline">เปิดดูคู่มือการใช้งาน</span>
+            <span class="text-[11px] text-gray-400">Retail Key แท้</span>
+          </div>
         </div>
       </div>
 
-      <!-- CARD 3: MS OFFICE 2021 -->
-      <div class="product-item bg-white/70 rounded-2xl p-5 sm:p-6 border border-gray-200/80 shadow-sm flex flex-col justify-between opacity-80 hover:opacity-100 transition">
-        <div>
-          <!-- Top Row: Icon + Badge -->
-          <div class="flex items-center justify-between mb-4">
-            <div class="w-12 h-12 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center p-2.5">
-              <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none">
-                <rect x="2" y="2" width="20" height="20" rx="4" fill="#D83B01"/>
-                <path d="M7 6h5.5a4.5 4.5 0 014.5 4.5v3a4.5 4.5 0 01-4.5 4.5H7V6z" fill="#FFFFFF"/>
-              </svg>
-            </div>
-            <span class="inline-flex items-center gap-1 text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-500">
-              เร็วๆ นี้
-            </span>
+      <!-- CARD 3: CHATGPT PLUS -->
+      <div class="product-item card-hover group cursor-pointer bg-white rounded-3xl border border-gray-200/90 shadow-sm flex flex-col overflow-hidden" onclick="showUpcomingModal('ChatGPT Plus')">
+        <!-- Full Brand Icon Canvas (ไอคอนจริงเต็มๆ การ์ด) -->
+        <div class="w-full h-48 sm:h-56 flex items-center justify-center p-6 bg-gradient-to-b from-emerald-50/50 via-white to-white border-b border-gray-100 relative overflow-hidden">
+          <span class="absolute top-3.5 right-3.5 inline-flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 border border-gray-200 shadow-2xs">
+            คู่มือเร็วๆ นี้
+          </span>
+          <img src="images/icons/chatgpt.png" alt="ChatGPT Plus" class="h-28 sm:h-32 w-auto object-contain transition-transform duration-300 group-hover:scale-110 drop-shadow-md">
+        </div>
+        
+        <div class="p-5 sm:p-6 flex-grow flex flex-col justify-between">
+          <div>
+            <h3 class="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-emerald-600 transition mb-1.5 flex items-center justify-between">
+              <span>ChatGPT Plus</span>
+              <i data-lucide="chevron-right" class="w-5 h-5 text-gray-400 group-hover:text-emerald-600 group-hover:translate-x-1 transition"></i>
+            </h3>
+            <p class="text-xs sm:text-sm text-gray-500 mb-3 line-clamp-2">
+              แนวทางล็อกอินใช้งานบัญชี, ฟีเจอร์ GPT-4o และข้อแนะนำความปลอดภัย
+            </p>
           </div>
 
-          <h3 class="text-lg font-bold text-gray-900 mb-1">
-            Microsoft Office 2021 Pro Plus
-          </h3>
-          <p class="text-xs text-gray-500 mb-4 line-clamp-2">
-            ลิงก์ดาวน์โหลดตัวติดตั้งแท้จาก Microsoft & ขั้นตอนใส่รหัสคีย์เปิดใช้งานถาวร
-          </p>
-        </div>
-
-        <div class="pt-3 border-t border-gray-100 flex flex-wrap gap-1.5 text-[11px] text-gray-400">
-          <span class="px-2 py-0.5 rounded-md bg-gray-50 border border-gray-200/60">Word / Excel / PowerPoint</span>
-          <span class="px-2 py-0.5 rounded-md bg-gray-50 border border-gray-200/60">ตลอดชีพ</span>
+          <div class="pt-3 border-t border-gray-100 flex items-center justify-between">
+            <span class="text-xs font-semibold text-emerald-600 group-hover:underline">ดูข้อมูลเบื้องต้น</span>
+            <span class="text-[11px] text-gray-400">OpenAI GPT-4o</span>
+          </div>
         </div>
       </div>
 
-      <!-- CARD 4: CAPCUT PRO -->
-      <div class="product-item bg-white/70 rounded-2xl p-5 sm:p-6 border border-gray-200/80 shadow-sm flex flex-col justify-between opacity-80 hover:opacity-100 transition">
-        <div>
-          <!-- Top Row: Icon + Badge -->
-          <div class="flex items-center justify-between mb-4">
-            <div class="w-12 h-12 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center p-2.5">
-              <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none">
-                <path d="M19.5 7.5L12 12l7.5 4.5V7.5zM4.5 16.5L12 12 4.5 7.5v9z" fill="#0F172A"/>
-              </svg>
-            </div>
-            <span class="inline-flex items-center gap-1 text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-500">
-              เร็วๆ นี้
-            </span>
+      <!-- CARD 4: GOOGLE GEMINI PRO -->
+      <div class="product-item card-hover group cursor-pointer bg-white rounded-3xl border border-gray-200/90 shadow-sm flex flex-col overflow-hidden" onclick="showUpcomingModal('Google Gemini Pro')">
+        <!-- Full Brand Icon Canvas (ไอคอนจริงเต็มๆ การ์ด) -->
+        <div class="w-full h-48 sm:h-56 flex items-center justify-center p-6 bg-gradient-to-b from-indigo-50/50 via-white to-white border-b border-gray-100 relative overflow-hidden">
+          <span class="absolute top-3.5 right-3.5 inline-flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 border border-gray-200 shadow-2xs">
+            คู่มือเร็วๆ นี้
+          </span>
+          <img src="images/icons/gemini.png" alt="Google Gemini Pro" class="h-28 sm:h-32 w-auto object-contain transition-transform duration-300 group-hover:scale-110 drop-shadow-md">
+        </div>
+        
+        <div class="p-5 sm:p-6 flex-grow flex flex-col justify-between">
+          <div>
+            <h3 class="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-indigo-600 transition mb-1.5 flex items-center justify-between">
+              <span>Google Gemini Pro</span>
+              <i data-lucide="chevron-right" class="w-5 h-5 text-gray-400 group-hover:text-indigo-600 group-hover:translate-x-1 transition"></i>
+            </h3>
+            <p class="text-xs sm:text-sm text-gray-500 mb-3 line-clamp-2">
+              วิธีเปิดสิทธิ์ใช้งาน Gemini Advanced และการเข้าถึงพื้นที่ Google One 2TB
+            </p>
           </div>
 
-          <h3 class="text-lg font-bold text-gray-900 mb-1">
-            CapCut Pro (บัญชีส่วนตัว)
-          </h3>
-          <p class="text-xs text-gray-500 mb-4 line-clamp-2">
-            ขั้นตอนล็อกอินเข้าใช้งานบัญชีส่วนตัว & วิธีตั้งค่าส่งออกวิดีโอระดับโปร
-          </p>
+          <div class="pt-3 border-t border-gray-100 flex items-center justify-between">
+            <span class="text-xs font-semibold text-indigo-600 group-hover:underline">ดูข้อมูลเบื้องต้น</span>
+            <span class="text-[11px] text-gray-400">Gemini 1.5 Pro</span>
+          </div>
         </div>
+      </div>
 
-        <div class="pt-3 border-t border-gray-100 flex flex-wrap gap-1.5 text-[11px] text-gray-400">
-          <span class="px-2 py-0.5 rounded-md bg-gray-50 border border-gray-200/60">บัญชีเดี่ยว 100%</span>
-          <span class="px-2 py-0.5 rounded-md bg-gray-50 border border-gray-200/60">คลาวด์ส่วนตัว</span>
+      <!-- CARD 5: MICROSOFT 365 / OFFICE -->
+      <div class="product-item card-hover group cursor-pointer bg-white rounded-3xl border border-gray-200/90 shadow-sm flex flex-col overflow-hidden" onclick="showUpcomingModal('Microsoft Office / 365')">
+        <!-- Full Brand Icon Canvas (ไอคอนจริงเต็มๆ การ์ด) -->
+        <div class="w-full h-48 sm:h-56 flex items-center justify-center p-6 bg-gradient-to-b from-amber-50/50 via-white to-white border-b border-gray-100 relative overflow-hidden">
+          <span class="absolute top-3.5 right-3.5 inline-flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 border border-gray-200 shadow-2xs">
+            คู่มือเร็วๆ นี้
+          </span>
+          <img src="images/icons/microsoft365.png" alt="Microsoft Office" class="h-28 sm:h-32 w-auto object-contain transition-transform duration-300 group-hover:scale-110 drop-shadow-md">
+        </div>
+        
+        <div class="p-5 sm:p-6 flex-grow flex flex-col justify-between">
+          <div>
+            <h3 class="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-amber-600 transition mb-1.5 flex items-center justify-between">
+              <span>Microsoft 365 / Office</span>
+              <i data-lucide="chevron-right" class="w-5 h-5 text-gray-400 group-hover:text-amber-600 group-hover:translate-x-1 transition"></i>
+            </h3>
+            <p class="text-xs sm:text-sm text-gray-500 mb-3 line-clamp-2">
+              ลิงก์ดาวน์โหลดตัวติดตั้งแท้จาก Microsoft & ขั้นตอนใส่รหัสคีย์เปิดใช้งาน
+            </p>
+          </div>
+
+          <div class="pt-3 border-t border-gray-100 flex items-center justify-between">
+            <span class="text-xs font-semibold text-amber-600 group-hover:underline">ดูข้อมูลเบื้องต้น</span>
+            <span class="text-[11px] text-gray-400">Office 2021 / 365</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 6: CAPCUT PRO -->
+      <div class="product-item card-hover group cursor-pointer bg-white rounded-3xl border border-gray-200/90 shadow-sm flex flex-col overflow-hidden" onclick="showUpcomingModal('CapCut Pro')">
+        <!-- Full Brand Icon Canvas (ไอคอนจริงเต็มๆ การ์ด) -->
+        <div class="w-full h-48 sm:h-56 flex items-center justify-center p-6 bg-gradient-to-b from-slate-100/60 via-white to-white border-b border-gray-100 relative overflow-hidden">
+          <span class="absolute top-3.5 right-3.5 inline-flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 border border-gray-200 shadow-2xs">
+            คู่มือเร็วๆ นี้
+          </span>
+          <img src="images/icons/capcut.png" alt="CapCut Pro" class="h-28 sm:h-32 w-auto object-contain transition-transform duration-300 group-hover:scale-110 drop-shadow-md">
+        </div>
+        
+        <div class="p-5 sm:p-6 flex-grow flex flex-col justify-between">
+          <div>
+            <h3 class="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-slate-800 transition mb-1.5 flex items-center justify-between">
+              <span>CapCut Pro</span>
+              <i data-lucide="chevron-right" class="w-5 h-5 text-gray-400 group-hover:text-slate-800 group-hover:translate-x-1 transition"></i>
+            </h3>
+            <p class="text-xs sm:text-sm text-gray-500 mb-3 line-clamp-2">
+              ขั้นตอนล็อกอินเข้าใช้งานบัญชีส่วนตัว & วิธีตั้งค่าส่งออกวิดีโอระดับโปร
+            </p>
+          </div>
+
+          <div class="pt-3 border-t border-gray-100 flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-700 group-hover:underline">ดูข้อมูลเบื้องต้น</span>
+            <span class="text-[11px] text-gray-400">บัญชีเดี่ยว 100%</span>
+          </div>
         </div>
       </div>
 
@@ -281,11 +324,8 @@
         <i data-lucide="arrow-left" class="w-4 h-4"></i>
         <span>กลับหน้าศูนย์รวมคู่มือ</span>
       </button>
-      <span class="text-xs font-bold text-red-600 flex items-center gap-1">
-        <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none">
-          <path d="M4 2v20c1.7-.3 3.3-.6 5-1V2H4zm11 0v17.4c1.7-.5 3.3-1.1 5-1.7V2h-5z" fill="#B81D24"/>
-          <path d="M4 2l11 19.4c1.7-.5 3.3-1.1 5-1.7L9 2H4z" fill="#E50914"/>
-        </svg>
+      <span class="text-xs font-bold text-red-600 flex items-center gap-1.5">
+        <img src="images/icons/netflix.png" alt="Netflix" class="w-4 h-4 object-contain">
         <span>คู่มือ Netflix</span>
       </span>
     </div>
@@ -392,13 +432,8 @@
         <i data-lucide="arrow-left" class="w-4 h-4"></i>
         <span>กลับหน้าศูนย์รวมคู่มือ</span>
       </button>
-      <span class="text-xs font-bold text-blue-600 flex items-center gap-1">
-        <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none">
-          <rect x="2" y="2" width="9" height="9" rx="1" fill="#0078D4"/>
-          <rect x="13" y="2" width="9" height="9" rx="1" fill="#0078D4"/>
-          <rect x="2" y="13" width="9" height="9" rx="1" fill="#0078D4"/>
-          <rect x="13" y="13" width="9" height="9" rx="1" fill="#0078D4"/>
-        </svg>
+      <span class="text-xs font-bold text-blue-600 flex items-center gap-1.5">
+        <img src="images/icons/windows11.png" alt="Windows 11" class="w-4 h-4 object-contain">
         <span>คู่มือ Windows Pro</span>
       </span>
     </div>
@@ -471,10 +506,28 @@
   </main>
 
   <!-- ========================================== -->
+  <!-- MODAL: UPCOMING PRODUCTS                   -->
+  <!-- ========================================== -->
+  <div id="upcomingModal" class="hidden fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-center shadow-2xl border border-gray-100 transform transition-all">
+      <div class="w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mx-auto mb-4">
+        <i data-lucide="book-open" class="w-7 h-7"></i>
+      </div>
+      <h3 id="modalProductName" class="text-lg font-bold text-gray-900 mb-2">คู่มือกำลังจัดทำ</h3>
+      <p class="text-xs sm:text-sm text-gray-500 mb-6 leading-relaxed">
+        คู่มือฉบับเต็มของสินค้านี้กำลังอยู่ในระหว่างการจัดทำภาพประกอบ หากคุณมีคำถามหรือติดปัญหาการใช้งาน สามารถทักแชทร้านค้าเพื่อสอบถามแอดมินได้ตลอดเวลาครับ
+      </p>
+      <button onclick="closeUpcomingModal()" class="w-full py-2.5 rounded-xl bg-gray-900 hover:bg-gray-800 text-white text-xs sm:text-sm font-semibold transition shadow-sm">
+        เข้าใจแล้ว
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
   <!-- MINIMAL FOOTER                             -->
   <!-- ========================================== -->
   <footer class="bg-white border-t border-gray-200 mt-auto py-6">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
       <p class="text-xs text-gray-500">
         © ONESTOP AI — ศูนย์รวมคู่มือและบริการหลังการขาย
       </p>
@@ -518,6 +571,16 @@
         window.location.hash = '';
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
+    }
+
+    // MODAL HANDLERS
+    function showUpcomingModal(name) {
+      document.getElementById('modalProductName').textContent = 'คู่มือ ' + name;
+      document.getElementById('upcomingModal').classList.remove('hidden');
+    }
+
+    function closeUpcomingModal() {
+      document.getElementById('upcomingModal').classList.add('hidden');
     }
 
     // NETFLIX SUB-TABS
